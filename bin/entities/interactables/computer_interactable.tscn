@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cmygteyig02mj"]
+
+[ext_resource type="Script" uid="uid://b5ei2kydmc5xx" path="res://bin/entities/interactables/computer_interactable.gd" id="1_dcypd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3povy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dcypd"]
+
+[node name="ComputerInteractable" type="Node3D" unique_id=1191655217 groups=["interactable"]]
+script = ExtResource("1_dcypd")
+
+[node name="CameraTarget" type="Marker3D" parent="." unique_id=1348034280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1373291, 1.7267339)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1844302090]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2108727142]
+shape = SubResource("BoxShape3D_3povy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=245704306]
+mesh = SubResource("BoxMesh_dcypd")

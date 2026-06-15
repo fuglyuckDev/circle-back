@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dnbuxacpfltc4"]
+
+[ext_resource type="Script" uid="uid://wootbv5vgsb3" path="res://bin/player/player.gd" id="1_om5rw"]
+[ext_resource type="Script" uid="uid://dxbadn6yq672b" path="res://bin/player/interaction_ray.gd" id="2_wkpl8"]
+[ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_qiuia"]
+[ext_resource type="Script" uid="uid://b66ud7stp5ic3" path="res://bin/player/first_person.gd" id="4_p06ge"]
+[ext_resource type="Script" uid="uid://c4elbk0h87oml" path="res://bin/player/controlled.gd" id="5_fg1fx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gw43"]
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_om5rw"]
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=1936977173]
+script = ExtResource("1_om5rw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=807874575]
+shape = SubResource("CapsuleShape3D_5gw43")
+
+[node name="Head" type="Node3D" parent="." unique_id=1846649132]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52303827, 0)
+
+[node name="FirstPersonView" type="Camera3D" parent="Head" unique_id=897755249]
+unique_name_in_owner = true
+physics_interpolation_mode = 1
+
+[node name="InteractionRay" type="RayCast3D" parent="Head/FirstPersonView" unique_id=895380153]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_wkpl8")
+
+[node name="CameraState" type="Node" parent="Head" unique_id=928013051 node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("3_qiuia")
+initial_state = NodePath("FirstPerson")
+metadata/_custom_type_script = "uid://81rtjubj5bf0"
+
+[node name="FirstPerson" type="Node" parent="Head/CameraState" unique_id=255456018]
+script = ExtResource("4_p06ge")
+metadata/_custom_type_script = "uid://bp0gb6qwxefli"
+
+[node name="Controlled" type="Node" parent="Head/CameraState" unique_id=1365695022]
+unique_name_in_owner = true
+script = ExtResource("5_fg1fx")
+metadata/_custom_type_script = "uid://bp0gb6qwxefli"
+
+[node name="WorldModel" type="Node3D" parent="." unique_id=1066729859]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldModel" unique_id=241058054]
+visible = false
+mesh = SubResource("CapsuleMesh_om5rw")
+
+[node name="CameraTarget" type="Marker3D" parent="." unique_id=1607624160]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52303827, 0)
+
+[connection signal="interacted_with" from="Head/FirstPersonView/InteractionRay" to="Head/CameraState/FirstPerson" method="_on_interaction_ray_interacted_with"]

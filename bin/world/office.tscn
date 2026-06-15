@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cvpkagxbs0krb"]
+
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_j54i4"]
+[ext_resource type="PackedScene" uid="uid://dnbuxacpfltc4" path="res://bin/player/player.tscn" id="2_dt7po"]
+[ext_resource type="PackedScene" uid="uid://cmygteyig02mj" path="res://bin/entities/interactables/computer_interactable.tscn" id="3_dt7po"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j54i4"]
+sky_top_color = Color(0.083880566, 0.10969902, 0.14408863, 1)
+sky_horizon_color = Color(0.18263596, 0.18495435, 0.1888966, 1)
+ground_bottom_color = Color(0.07822692, 0.061681993, 0.04306133, 1)
+ground_horizon_color = Color(0.18263596, 0.18495435, 0.1888966, 1)
+
+[sub_resource type="Sky" id="Sky_dt7po"]
+sky_material = SubResource("ProceduralSkyMaterial_j54i4")
+
+[sub_resource type="Environment" id="Environment_ouqls"]
+background_mode = 2
+sky = SubResource("Sky_dt7po")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ouqls"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlusl"]
+albedo_texture = ExtResource("1_j54i4")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h16kv"]
+material = SubResource("StandardMaterial3D_vlusl")
+size = Vector2(20, 20)
+
+[node name="Office" type="Node3D" unique_id=1774504172]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2021739651]
+environment = SubResource("Environment_ouqls")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1065354306]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=337826647]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1688711164]
+shape = SubResource("WorldBoundaryShape3D_ouqls")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D" unique_id=529008455]
+mesh = SubResource("PlaneMesh_h16kv")
+
+[node name="Player" parent="." unique_id=1936977173 instance=ExtResource("2_dt7po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.099962, 0)
+
+[node name="ComputerInteractable" parent="." unique_id=1230173064 instance=ExtResource("3_dt7po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7162318, -4.826788)
