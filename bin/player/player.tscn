@@ -14,6 +14,7 @@ height = 1.8
 
 [node name="Player" type="CharacterBody3D" unique_id=1936977173]
 script = ExtResource("1_om5rw")
+look_sensitivity = 0.003
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=807874575]
 shape = SubResource("CapsuleShape3D_5gw43")
@@ -36,8 +37,11 @@ script = ExtResource("3_qiuia")
 initial_state = NodePath("FirstPerson")
 metadata/_custom_type_script = "uid://81rtjubj5bf0"
 
-[node name="FirstPerson" type="Node" parent="Head/CameraState" unique_id=255456018]
+[node name="FirstPerson" type="Node" parent="Head/CameraState" unique_id=255456018 node_paths=PackedStringArray("player")]
 script = ExtResource("4_p06ge")
+player = NodePath("../../..")
+amplitude = 0.005
+freq = 2.0
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="Controlled" type="Node" parent="Head/CameraState" unique_id=1365695022]

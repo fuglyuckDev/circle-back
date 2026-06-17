@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cxqsnf3bj1sk8"]
+
+[ext_resource type="Script" uid="uid://bdrkwkmk6mq7b" path="res://bin/entities/manager/manger.gd" id="1_y43eu"]
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_yhyfw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y43eu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxue7"]
+albedo_color = Color(1, 0.07450981, 0, 1)
+albedo_texture = ExtResource("1_yhyfw")
+uv1_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m6gxq"]
+material = SubResource("StandardMaterial3D_oxue7")
+
+[node name="Manger" type="CharacterBody3D" unique_id=68780236]
+script = ExtResource("1_y43eu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=693479446]
+shape = SubResource("CapsuleShape3D_y43eu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1787120091]
+mesh = SubResource("CapsuleMesh_m6gxq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1011566277]
+debug_enabled = true

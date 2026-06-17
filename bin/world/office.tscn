@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_j54i4"]
 [ext_resource type="PackedScene" uid="uid://dnbuxacpfltc4" path="res://bin/player/player.tscn" id="2_dt7po"]
 [ext_resource type="PackedScene" uid="uid://cmygteyig02mj" path="res://bin/entities/interactables/computer_interactable.tscn" id="3_dt7po"]
+[ext_resource type="PackedScene" uid="uid://cxqsnf3bj1sk8" path="res://bin/entities/manager/manger.tscn" id="4_ouqls"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j54i4"]
 sky_top_color = Color(0.083880566, 0.10969902, 0.14408863, 1)
@@ -18,6 +19,10 @@ background_mode = 2
 sky = SubResource("Sky_dt7po")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ouqls"]
+vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ouqls"]
 
@@ -38,16 +43,23 @@ environment = SubResource("Environment_ouqls")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=337826647]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1688711164]
-shape = SubResource("WorldBoundaryShape3D_ouqls")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D" unique_id=529008455]
-mesh = SubResource("PlaneMesh_h16kv")
-
 [node name="Player" parent="." unique_id=1936977173 instance=ExtResource("2_dt7po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.099962, 0)
 
 [node name="ComputerInteractable" parent="." unique_id=1230173064 instance=ExtResource("3_dt7po")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7162318, -4.826788)
+
+[node name="Manger" parent="." unique_id=1770923447 node_paths=PackedStringArray("player") instance=ExtResource("4_ouqls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9915266, 1.3249168, 0)
+player = NodePath("../Player")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2123120962]
+navigation_mesh = SubResource("NavigationMesh_ouqls")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=337826647]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=1688711164]
+shape = SubResource("WorldBoundaryShape3D_ouqls")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor/CollisionShape3D" unique_id=529008455]
+mesh = SubResource("PlaneMesh_h16kv")

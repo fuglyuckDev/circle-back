@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @export var look_sensitivity : float = 0.006
-
+var stamina : float
 
 func _physics_process(delta: float) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -22,8 +22,19 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		_sprint(delta)
 		move_and_slide()
+
+func _sprint(delta) -> void:
+	stamina = clamp(stamina, 0.0, 10.0)
+	if Input.is_action_pressed("sprint") and stamina > 0.0:
+		stamina -= delta*2
+		SPEED = 8.0
+	else:
+		Input.action_release("sprint")
+		SPEED = 5.0
+		await get_tree().create_timer(1.0).timeout
+		stamina += delta*2
 
 func _unhandled_input(event: InputEvent) -> void:
 	#Capture mouse events if clicked, exit with esc
