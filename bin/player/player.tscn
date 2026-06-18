@@ -12,7 +12,7 @@ height = 1.8
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_om5rw"]
 height = 1.8
 
-[node name="Player" type="CharacterBody3D" unique_id=1936977173]
+[node name="Player" type="CharacterBody3D" unique_id=1936977173 groups=["player"]]
 script = ExtResource("1_om5rw")
 look_sensitivity = 0.003
 
@@ -52,7 +52,6 @@ metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 [node name="WorldModel" type="Node3D" parent="." unique_id=1066729859]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldModel" unique_id=241058054]
-visible = false
 mesh = SubResource("CapsuleMesh_om5rw")
 
 [node name="CameraTarget" type="Marker3D" parent="." unique_id=1607624160]

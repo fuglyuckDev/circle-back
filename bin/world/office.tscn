@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvpkagxbs0krb"]
 
 [ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_j54i4"]
+[ext_resource type="Script" uid="uid://cj748h68demux" path="res://bin/world/office.gd" id="1_vlusl"]
 [ext_resource type="PackedScene" uid="uid://dnbuxacpfltc4" path="res://bin/player/player.tscn" id="2_dt7po"]
 [ext_resource type="PackedScene" uid="uid://cmygteyig02mj" path="res://bin/entities/interactables/computer_interactable.tscn" id="3_dt7po"]
 [ext_resource type="PackedScene" uid="uid://cxqsnf3bj1sk8" path="res://bin/entities/manager/manger.tscn" id="4_ouqls"]
@@ -21,8 +22,9 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ouqls"]
-vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-9.5, 0.5, -2.75, -4.5, 0.5, -2.75, -4.5, 0.5, -3.75, -3.5, 0.5, -4, -3.5, 0.5, -9.5, -9.5, 0.5, -9.5, 3.75, 0.5, -1, 3.25, 0.5, -2.25, 3, 0.5, -1.75, 2.75, 0.5, -0.75, -2.25, 0.5, -3.75, 1, 0.5, -3.75, 2.25, 0.5, -4, 2.25, 0.5, -9.5, -2.25, 0.5, -2, -2.75, 0.5, -1.75, -1, 0.5, -0.5, -0.75, 0.5, -1, 1, 0.5, -2, 1.25, 0.5, 0.5, 2.75, 0.5, 0.5, 1, 0.5, -1, 4.75, 0.5, -1, 3.25, 0.5, -3.75, 9.5, 0.5, 0.25, 9.5, 0.5, -9.5, 5, 0.5, 0.25, -1, 0.5, 0.75, -4.25, 0.5, -1.75, -9.5, 0.5, 9.5, -1.25, 0.5, 9.5, 3, 0.5, 1.25, 0.75, 0.5, 1.25, 9.5, 0.5, 9.5, 4.75, 0.5, 1.25, -0.75, 0.5, 1.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(10, 3, 11), PackedInt32Array(11, 3, 12), PackedInt32Array(12, 3, 4), PackedInt32Array(12, 4, 13), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(14, 10, 17), PackedInt32Array(17, 10, 18), PackedInt32Array(18, 10, 11), PackedInt32Array(20, 19, 9), PackedInt32Array(9, 19, 21), PackedInt32Array(18, 21, 17), PackedInt32Array(21, 18, 9), PackedInt32Array(9, 18, 8), PackedInt32Array(6, 7, 22), PackedInt32Array(22, 7, 23), PackedInt32Array(22, 23, 24), PackedInt32Array(24, 23, 13), PackedInt32Array(24, 13, 25), PackedInt32Array(24, 26, 22), PackedInt32Array(23, 12, 13), PackedInt32Array(16, 27, 15), PackedInt32Array(15, 27, 28), PackedInt32Array(28, 27, 0), PackedInt32Array(0, 27, 30), PackedInt32Array(0, 30, 29), PackedInt32Array(0, 1, 28), PackedInt32Array(20, 31, 19), PackedInt32Array(19, 31, 32), PackedInt32Array(32, 31, 30), PackedInt32Array(31, 34, 30), PackedInt32Array(30, 34, 33), PackedInt32Array(26, 24, 34), PackedInt32Array(34, 24, 33), PackedInt32Array(30, 27, 35), PackedInt32Array(30, 35, 32)]
+edge_max_error = 1.0
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ouqls"]
 
@@ -34,7 +36,17 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_vlusl")
 size = Vector2(20, 20)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4qru"]
+albedo_texture = ExtResource("1_j54i4")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_esmnr"]
+material = SubResource("StandardMaterial3D_m4qru")
+
 [node name="Office" type="Node3D" unique_id=1774504172]
+script = ExtResource("1_vlusl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2021739651]
 environment = SubResource("Environment_ouqls")
@@ -47,7 +59,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.099962, 0)
 
 [node name="ComputerInteractable" parent="." unique_id=1230173064 instance=ExtResource("3_dt7po")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7162318, -4.826788)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3620281, -4.826788)
 
 [node name="Manger" parent="." unique_id=1770923447 node_paths=PackedStringArray("player") instance=ExtResource("4_ouqls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9915266, 1.3249168, 0)
@@ -63,3 +75,50 @@ shape = SubResource("WorldBoundaryShape3D_ouqls")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor/CollisionShape3D" unique_id=529008455]
 mesh = SubResource("PlaneMesh_h16kv")
+
+[node name="WallInstance" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1649605779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7377176, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallInstance" unique_id=1929339197]
+shape = SubResource("BoxShape3D_pitpm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/WallInstance/CollisionShape3D" unique_id=605872079]
+mesh = SubResource("BoxMesh_esmnr")
+
+[node name="WallInstance2" type="StaticBody3D" parent="NavigationRegion3D" unique_id=2073682905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8394897, 0.7377176, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallInstance2" unique_id=582447579]
+shape = SubResource("BoxShape3D_pitpm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/WallInstance2/CollisionShape3D" unique_id=1726820424]
+mesh = SubResource("BoxMesh_esmnr")
+
+[node name="WallInstance3" type="StaticBody3D" parent="NavigationRegion3D" unique_id=88779645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.126715, 0.7377176, -2.8141644)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallInstance3" unique_id=1994477743]
+shape = SubResource("BoxShape3D_pitpm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/WallInstance3/CollisionShape3D" unique_id=1599769319]
+mesh = SubResource("BoxMesh_esmnr")
+
+[node name="WallInstance4" type="StaticBody3D" parent="NavigationRegion3D" unique_id=402234222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3925421, 0.7377176, -2.8141644)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallInstance4" unique_id=526066324]
+shape = SubResource("BoxShape3D_pitpm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/WallInstance4/CollisionShape3D" unique_id=1651376976]
+mesh = SubResource("BoxMesh_esmnr")
+
+[node name="RoamingTargets" type="Node3D" parent="." unique_id=1098150379]
+
+[node name="Target1" type="Marker3D" parent="RoamingTargets" unique_id=23054274 groups=["roam_target"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5617313, 0.44276094, 0)
+
+[node name="Target2" type="Marker3D" parent="RoamingTargets" unique_id=1888295759 groups=["roam_target"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4188242, 0.44276094, -6.2082205)
+
+[node name="Target3" type="Marker3D" parent="RoamingTargets" unique_id=849843053 groups=["roam_target"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2560487, 0.44276094, 2.7908468)

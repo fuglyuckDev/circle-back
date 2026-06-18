@@ -1,10 +1,16 @@
 extends CharacterBody3D
 
 
-var SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-@export var look_sensitivity : float = 0.006
+
 var stamina : float
+
+@export_category("Camera Settings")
+@export var look_sensitivity : float = 0.006
+@export var default_fov : float = 75
+@export var sprint_fov : float = 90
+@export_category("Movement Settings")
+@export var SPEED := 5.0
+@export var SPRINT_SPEED := 8.0
 
 func _physics_process(delta: float) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -29,12 +35,16 @@ func _sprint(delta) -> void:
 	stamina = clamp(stamina, 0.0, 10.0)
 	if Input.is_action_pressed("sprint") and stamina > 0.0:
 		stamina -= delta*2
-		SPEED = 8.0
+		SPEED = SPRINT_SPEED
+		var tween = create_tween()
+		tween.tween_property(%FirstPersonView, "fov",sprint_fov, 0.2)
 	else:
 		Input.action_release("sprint")
 		SPEED = 5.0
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.0).timeout
 		stamina += delta*2
+		var tween = create_tween()
+		tween.tween_property(%FirstPersonView, "fov",default_fov, 0.2)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#Capture mouse events if clicked, exit with esc
