@@ -1,17 +1,27 @@
 extends CharacterBody3D
 
-const SPEED = 2.0
+var SPEED = 2.0
 const JUMP_VELOCITY = 4.5
 
+@export var PERSUE_SPEED : float = 6.5
+@export var WALK_SPEED : float = 2.0
 @export var player : CharacterBody3D
 @onready var nav_agent := $NavigationAgent3D
 @onready var raycast_head = $RaycastHead
 @onready var raycast_body = $RaycastBody
-@export var turn_speed : float = 8.0
+@export var turn_speed : float = 16.0
 var look_at_target : bool
 var is_player_in_range : bool
 
+signal player_position(player_pos:Vector3)
+
 func _physics_process(delta: float) -> void:
+	print("OverPersue time left: ", %OverPersue.time_left)
+	if %ManagerStates.current_state == %Persuing:
+		SPEED = PERSUE_SPEED
+	else:
+		SPEED = WALK_SPEED
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta # Have the enemy fall if it's in the air :o
 	var current_location = global_transform.origin # Enemy's current location
@@ -31,25 +41,43 @@ func _physics_process(delta: float) -> void:
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 
+
+func _over_persue():
+	if %ManagerStates.current_state == %Persuing:
+		if %OverPersue.is_stopped():
+			%OverPersue.start(2.0)
+		else:
+			if %OverPersue.time_left > 0.01:
+				player_position.emit(player.transform.origin)
+			else:
+				print("OverPersue Over!")
+				%ManagerStates.change_state("Roaming")
+
 func _can_manager_see_player(player_in_range):
-	print("Checking for player...")
 	if player_in_range:
-		raycast_body.look_at(player.global_position)
-		raycast_head.look_at(player.get_node("Head").global_position)
-		print(raycast_body.get_collider())
+		raycast_body.target_position = to_local(player.global_position)
+		raycast_head.target_position = to_local(player.get_node("Head").global_position)
+		raycast_body.target_position.y = raycast_body.target_position.y - 0.9
+		raycast_head.target_position.y = raycast_head.target_position.y - 1.8
+		if _check_if_player_collision(raycast_body.get_collider()) or _check_if_player_collision(raycast_head.get_collider()):
+			if %ManagerStates.current_state != %Persuing:
+				%ManagerStates.change_state("Persuing")
+			else:
+				%OverPersue.stop()
+				player_position.emit(player.transform.origin)
+		else:
+			_over_persue()
 	else:
-		raycast_body.target_position = Vector3.ZERO
-		raycast_body.target_position = Vector3.ZERO
-	
-	
+		_over_persue()
 
 # Currently working on stateless player detection, which then will target player if head / body is visible and change state to persuing.
 # Whenever a player is detected, force the state to switch to persuit, emit signal persuing, add player to update_target_location
 
 func _check_if_player_collision(body):
-	var body_groups = body.get_groups()
-	if body_groups.has(&"player"):
-		return true
+	if body:
+		var body_groups = body.get_groups()
+		if body_groups.has(&"player"):
+			return true
 
 func _on_idle_enter_idle() -> void:
 	look_at_target = false

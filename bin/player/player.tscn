@@ -17,11 +17,12 @@ script = ExtResource("1_om5rw")
 look_sensitivity = 0.003
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=807874575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9078435, 0)
 shape = SubResource("CapsuleShape3D_5gw43")
 
 [node name="Head" type="Node3D" parent="." unique_id=1846649132]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52303827, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4308817, 0)
 
 [node name="FirstPersonView" type="Camera3D" parent="Head" unique_id=897755249]
 unique_name_in_owner = true
@@ -50,12 +51,14 @@ script = ExtResource("5_fg1fx")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="WorldModel" type="Node3D" parent="." unique_id=1066729859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9078435, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldModel" unique_id=241058054]
+visible = false
 mesh = SubResource("CapsuleMesh_om5rw")
 
 [node name="CameraTarget" type="Marker3D" parent="." unique_id=1607624160]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52303827, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4308817, 0)
 
 [connection signal="interacted_with" from="Head/FirstPersonView/InteractionRay" to="Head/CameraState/FirstPerson" method="_on_interaction_ray_interacted_with"]

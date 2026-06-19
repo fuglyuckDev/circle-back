@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bdrkwkmk6mq7b" path="res://bin/entities/manager/manger.gd" id="1_y43eu"]
 [ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_yhyfw"]
 [ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_m6gxq"]
-[ext_resource type="Script" uid="uid://bp0gb6qwxefli" path="res://bin/scripts/StateMachine/State.gd" id="4_kp7jq"]
 [ext_resource type="Script" uid="uid://jrejgw5kuvcf" path="res://bin/entities/manager/idle.gd" id="4_qigyt"]
 [ext_resource type="Script" uid="uid://dcfcj08nhlwgq" path="res://bin/entities/manager/roaming.gd" id="5_qigyt"]
+[ext_resource type="Script" uid="uid://d4bfdte3buehq" path="res://bin/entities/manager/persuing.gd" id="6_qigyt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y43eu"]
 
@@ -21,22 +21,21 @@ material = SubResource("StandardMaterial3D_oxue7")
 radius = 0.13
 height = 0.57097656
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_pitpm"]
-height = 1.0893555
-radius = 4.7001953
-
 [node name="Manger" type="CharacterBody3D" unique_id=68780236 groups=["enemy"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_y43eu")
+turn_speed = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=693479446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0115988, 0)
 shape = SubResource("CapsuleShape3D_y43eu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1787120091]
 mesh = SubResource("CapsuleMesh_m6gxq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1011566277]
+path_height_offset = 1.0
 debug_enabled = true
 
 [node name="ManagerStates" type="Node" parent="." unique_id=420953404 node_paths=PackedStringArray("initial_state")]
@@ -57,7 +56,8 @@ script = ExtResource("5_qigyt")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="Persuing" type="Node" parent="ManagerStates" unique_id=591529169]
-script = ExtResource("4_kp7jq")
+unique_name_in_owner = true
+script = ExtResource("6_qigyt")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="IdleTime" type="Timer" parent="." unique_id=550696328]
@@ -65,25 +65,35 @@ wait_time = 5.0
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1300650774]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.7115989, 0)
 mesh = SubResource("CapsuleMesh_pitpm")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=2018983434]
+[node name="ViewCone" type="Area3D" parent="." unique_id=2018983434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0115988, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=716693883]
-shape = SubResource("CylinderShape3D_pitpm")
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="ViewCone" unique_id=859129492]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 2.0
+polygon = PackedVector2Array(0, 0, 5, 9, -5, 9)
 
 [node name="RaycastHead" type="RayCast3D" parent="." unique_id=1129349570]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-target_position = Vector3(0, 0, 6.915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7115989, 0)
+target_position = Vector3(0, 0, 5)
 
 [node name="RaycastBody" type="RayCast3D" parent="." unique_id=1775533396]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-target_position = Vector3(0, 0, 6.915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7115989, 0)
+target_position = Vector3(0, 0, 5)
 
+[node name="OverPersue" type="Timer" parent="." unique_id=1416595707]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[connection signal="player_position" from="." to="ManagerStates/Persuing" method="_on_manger_player_position"]
 [connection signal="target_reached" from="NavigationAgent3D" to="ManagerStates/Roaming" method="_on_navigation_agent_3d_target_reached"]
+[connection signal="target_reached" from="NavigationAgent3D" to="ManagerStates/Persuing" method="_on_navigation_agent_3d_target_reached"]
 [connection signal="enter_idle" from="ManagerStates/Idle" to="." method="_on_idle_enter_idle"]
 [connection signal="exit_idle" from="ManagerStates/Idle" to="." method="_on_idle_exit_idle"]
 [connection signal="timeout" from="IdleTime" to="ManagerStates/Idle" method="_on_idle_time_timeout"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="ViewCone" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="ViewCone" to="." method="_on_area_3d_body_exited"]
