@@ -12,12 +12,13 @@ const JUMP_VELOCITY = 4.5
 @export var turn_speed : float = 16.0
 var look_at_target : bool
 var is_player_in_range : bool
+var player_last_known_pos : Vector3
 
 signal player_position(player_pos:Vector3)
+signal search_position(search_pos:Vector3)
 
 func _physics_process(delta: float) -> void:
-	print("OverPersue time left: ", %OverPersue.time_left)
-	if %ManagerStates.current_state == %Persuing:
+	if %ManagerStates.current_state == %Persuing or %ManagerStates.current_state == %Searching:
 		SPEED = PERSUE_SPEED
 	else:
 		SPEED = WALK_SPEED
@@ -49,9 +50,11 @@ func _over_persue():
 		else:
 			if %OverPersue.time_left > 0.01:
 				player_position.emit(player.transform.origin)
+				player_last_known_pos = player.transform.origin
 			else:
-				print("OverPersue Over!")
-				%ManagerStates.change_state("Roaming")
+				print("Player last known pos: ", player_last_known_pos)
+				%ManagerStates.change_state("Searching")
+				search_position.emit(player_last_known_pos)
 
 func _can_manager_see_player(player_in_range):
 	if player_in_range:

@@ -3,7 +3,7 @@ extends State
 var current_target : Marker3D
 
 func enter():
-	print("Roaming")
+	print("Roaming...")
 
 func physics_update(_delta: float):
 	if current_target:
@@ -11,3 +11,6 @@ func physics_update(_delta: float):
 
 func _on_navigation_agent_3d_target_reached() -> void:
 	%ManagerStates.change_state("idle")
+
+func exit():
+	current_target = null

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://jrejgw5kuvcf" path="res://bin/entities/manager/idle.gd" id="4_qigyt"]
 [ext_resource type="Script" uid="uid://dcfcj08nhlwgq" path="res://bin/entities/manager/roaming.gd" id="5_qigyt"]
 [ext_resource type="Script" uid="uid://d4bfdte3buehq" path="res://bin/entities/manager/persuing.gd" id="6_qigyt"]
+[ext_resource type="Script" uid="uid://5xjg3ed5f5ix" path="res://bin/entities/manager/searching.gd" id="7_h17ng"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y43eu"]
 
@@ -60,6 +61,11 @@ unique_name_in_owner = true
 script = ExtResource("6_qigyt")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
+[node name="Searching" type="Node" parent="ManagerStates" unique_id=1986407289]
+unique_name_in_owner = true
+script = ExtResource("7_h17ng")
+metadata/_custom_type_script = "uid://bp0gb6qwxefli"
+
 [node name="IdleTime" type="Timer" parent="." unique_id=550696328]
 wait_time = 5.0
 one_shot = true
@@ -90,8 +96,10 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="player_position" from="." to="ManagerStates/Persuing" method="_on_manger_player_position"]
+[connection signal="search_position" from="." to="ManagerStates/Searching" method="_on_manger_search_position"]
 [connection signal="target_reached" from="NavigationAgent3D" to="ManagerStates/Roaming" method="_on_navigation_agent_3d_target_reached"]
 [connection signal="target_reached" from="NavigationAgent3D" to="ManagerStates/Persuing" method="_on_navigation_agent_3d_target_reached"]
+[connection signal="target_reached" from="NavigationAgent3D" to="ManagerStates/Searching" method="_on_navigation_agent_3d_target_reached"]
 [connection signal="enter_idle" from="ManagerStates/Idle" to="." method="_on_idle_enter_idle"]
 [connection signal="exit_idle" from="ManagerStates/Idle" to="." method="_on_idle_exit_idle"]
 [connection signal="timeout" from="IdleTime" to="ManagerStates/Idle" method="_on_idle_time_timeout"]

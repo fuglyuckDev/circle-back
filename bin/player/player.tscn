@@ -27,6 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4308817, 0)
 [node name="FirstPersonView" type="Camera3D" parent="Head" unique_id=897755249]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
+fov = 37.849285
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/FirstPersonView" unique_id=895380153]
 target_position = Vector3(0, 0, -2)
