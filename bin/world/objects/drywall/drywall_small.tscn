@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dlrf1v86swgp8"]
+
+[node name="DrywallSmall" type="Node3D" unique_id=1811626310]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1973816025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
+size = Vector3(1, 3, 0.2)

@@ -10,24 +10,28 @@ uv1_triplanar = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=832753290]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0.06736612, 0)
+use_collision = true
 radius = 0.15
 height = 0.389
 material = SubResource("StandardMaterial3D_cares")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1227671994]
 transform = Transform3D(0.32410243, -0.10259289, 0.0056841886, 0.102607235, 0.32414773, 1.9112088e-10, -0.005419167, 0.0017154082, 0.33995247, -0.026653484, 0.12893423, 0.022216856)
+use_collision = true
 radius = 0.028808594
 height = 0.389
 material = SubResource("StandardMaterial3D_cares")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1559377748]
 transform = Transform3D(0.1374655, -0.03876353, 0.30854598, 0.10078506, 0.3246929, -0.004110331, -0.29418635, 0.0931231, 0.14276722, 0.0023290515, 0.1293123, 0.03124711)
+use_collision = true
 radius = 0.028808594
 height = 0.389
 material = SubResource("StandardMaterial3D_cares")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=1909798430]
 transform = Transform3D(-0.097721316, 0.026223699, -0.32459646, 0.10078505, 0.3246929, -0.004110328, 0.30966583, -0.0974004, -0.101095214, 0.015311182, 0.12313974, -0.028703973)
+use_collision = true
 radius = 0.028808594
 height = 0.389
 material = SubResource("StandardMaterial3D_cares")

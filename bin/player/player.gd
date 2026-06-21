@@ -3,6 +3,8 @@ extends CharacterBody3D
 
 
 var stamina : float
+var default_head_height = 1.431
+var crouch_height = default_head_height / 2
 
 @export_category("Camera Settings")
 @export var look_sensitivity : float = 0.006
@@ -11,25 +13,35 @@ var stamina : float
 @export_category("Movement Settings")
 @export var SPEED := 5.0
 @export var SPRINT_SPEED := 8.0
+@export var CROUCH_SPEED := 1.5
 
 func _physics_process(delta: float) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		# Add the gravity.
+		
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
+		
 		var input_dir := Input.get_vector("left", "right", "forwards", "backwards")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
 		if direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+		
 		_sprint(delta)
+		_crouch(delta)
 		move_and_slide()
+
+func _crouch(delta):
+	var tween = create_tween()
+	if Input.is_action_pressed("crouch"):
+		tween.tween_property(%Head, "position:y", crouch_height, 0.2)
+		SPEED = CROUCH_SPEED
+	else:
+		tween.tween_property(%Head, "position:y", default_head_height, 0.2)
 
 func _sprint(delta) -> void:
 	stamina = clamp(stamina, 0.0, 10.0)
@@ -40,7 +52,7 @@ func _sprint(delta) -> void:
 		tween.tween_property(%FirstPersonView, "fov",sprint_fov, 0.2)
 	else:
 		Input.action_release("sprint")
-		SPEED = 5.0
+		SPEED = 3.0
 		await get_tree().create_timer(0.0).timeout
 		stamina += delta*2
 		var tween = create_tween()
