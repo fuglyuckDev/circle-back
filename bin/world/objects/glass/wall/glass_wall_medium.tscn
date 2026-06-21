@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://d1ak8oubj7qea"]
+
+[ext_resource type="Shader" uid="uid://ct1ia57g35cle" path="res://bin/world/objects/glass/wall/glass_wall.gdshader" id="1_xnaxi"]
+[ext_resource type="Shader" uid="uid://qk3i1thwyjcy" path="res://bin/world/objects/glass/wall/frosted_glass_wall.gdshader" id="2_tovdv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pitpm"]
+render_priority = 0
+shader = ExtResource("1_xnaxi")
+shader_parameter/transparency_colour = Color(0.9647079, 0.9999997, 0.9999662, 1)
+shader_parameter/AirIOR = 1.0
+shader_parameter/IOR = 1.5
+shader_parameter/uv1_scale = Vector2(1, 1)
+shader_parameter/uv1_offset = Vector2(0, 0)
+shader_parameter/normalstrength = 1.0
+shader_parameter/refraction_type = 1
+shader_parameter/simple_refraction_amount = 0.1
+shader_parameter/traced_refraction_far_clip = 50.0
+shader_parameter/traced_refraction_steps = 512
+shader_parameter/ssr_type = 2
+shader_parameter/traced_ssr_far_clip = 50.0
+shader_parameter/traced_ssr_steps = 512
+shader_parameter/ssr_screen_fade = 0.05
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x5t4y"]
+noise_type = 4
+frequency = 1.0
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vkfsc"]
+width = 2841
+noise = SubResource("FastNoiseLite_x5t4y")
+as_normal_map = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esmnr"]
+render_priority = 0
+shader = ExtResource("2_tovdv")
+shader_parameter/albedo = Color(1, 1, 1, 0)
+shader_parameter/roughness = 0.7600000361
+shader_parameter/roughness_texture = SubResource("NoiseTexture2D_vkfsc")
+shader_parameter/refraction = 0.5
+shader_parameter/refraction_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/normal_strength = 0.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/surface_contribution = 0.2
+shader_parameter/specular_contribution = 0.2
+shader_parameter/refraction_contribution = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="GlassWallMedium" type="Node3D" unique_id=37970590]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1366260250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+autosmooth = true
+use_collision = true
+size = Vector3(10, 1, 0.01)
+material = SubResource("ShaderMaterial_pitpm")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=2115811093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+autosmooth = true
+use_collision = true
+size = Vector3(10, 1, 0.01)
+material = SubResource("ShaderMaterial_pitpm")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=77545218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+autosmooth = true
+use_collision = true
+size = Vector3(10, 1, 0.01)
+material = SubResource("ShaderMaterial_esmnr")

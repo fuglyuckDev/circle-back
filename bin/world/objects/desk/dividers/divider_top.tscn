@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://uywltq522d70"]
+
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_fdpgf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0oef"]
+albedo_texture = ExtResource("1_fdpgf")
+uv1_triplanar = true
+
+[node name="DividerTop" type="Node3D" unique_id=792376101]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1757057747]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.2643192, 0)
+size = Vector3(2, 0.03769532, 0.54345703)
+material = SubResource("StandardMaterial3D_u0oef")

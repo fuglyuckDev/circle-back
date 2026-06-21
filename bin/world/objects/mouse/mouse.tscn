@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bu5f7hup0w1q5"]
+
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_xbjtl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pitpm"]
+albedo_texture = ExtResource("1_xbjtl")
+uv1_triplanar = true
+
+[node name="Mouse" type="Node3D" unique_id=1174542321]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=445772386]
+use_collision = true
+size = Vector3(0.07, 0.02, 0.15)
+material = SubResource("StandardMaterial3D_pitpm")

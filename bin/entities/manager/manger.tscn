@@ -37,7 +37,6 @@ mesh = SubResource("CapsuleMesh_m6gxq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1011566277]
 path_height_offset = 1.0
-debug_enabled = true
 
 [node name="ManagerStates" type="Node" parent="." unique_id=420953404 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true

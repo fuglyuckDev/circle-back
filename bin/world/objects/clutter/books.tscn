@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://3a4m7hfqhlbe"]
+
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_juxhy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0oef"]
+albedo_texture = ExtResource("1_juxhy")
+uv1_triplanar = true
+
+[node name="Books" type="Node3D" unique_id=2094492441]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1112885471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1508649, 0)
+size = Vector3(0.05, 0.297, 0.21)
+material = SubResource("StandardMaterial3D_u0oef")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=350684959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050818287, 0.1508649, 0)
+size = Vector3(0.05, 0.297, 0.21)
+material = SubResource("StandardMaterial3D_u0oef")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1595582132]
+transform = Transform3D(0.888852, 0.4581944, 0, -0.4581944, 0.888852, 0, 0, 0, 1, -0.16271058, 0.1508649, 0)
+size = Vector3(0.05, 0.297, 0.21)
+material = SubResource("StandardMaterial3D_u0oef")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=273284497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.057279393, 0.15419059, 0)
+size = Vector3(0.05, 0.30365136, 0.21)
+material = SubResource("StandardMaterial3D_u0oef")

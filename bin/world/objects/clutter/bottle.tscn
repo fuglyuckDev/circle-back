@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ba7vpn48iidl2"]
+
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_t6thp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fyuo"]
+albedo_texture = ExtResource("1_t6thp")
+uv1_triplanar = true
+
+[node name="Bottle" type="Node3D" unique_id=1178213257]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=864027217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15032369, 0)
+radius = 0.05
+height = 0.3
+material = SubResource("StandardMaterial3D_5fyuo")

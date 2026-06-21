@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://d0snmdpat4t0k"]
+
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_qpdyk"]
+[ext_resource type="Script" uid="uid://chipp4l22k4ro" path="res://bin/world/objects/desk/default_items.gd" id="2_u0oef"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pitpm"]
+albedo_texture = ExtResource("1_qpdyk")
+clearcoat_enabled = true
+clearcoat = 0.11
+clearcoat_roughness = 0.12
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
+size = Vector3(1.9835205, 0.9250488, 0.97998047)
+
+[node name="Desk" type="Node3D" unique_id=1296511605]
+
+[node name="DeskGeometry" type="StaticBody3D" parent="." unique_id=282078881]
+
+[node name="Top" type="CSGBox3D" parent="DeskGeometry" unique_id=761706867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8183579, 0)
+use_collision = true
+size = Vector3(2, 0.03769532, 1)
+material = SubResource("StandardMaterial3D_pitpm")
+
+[node name="Leg" type="CSGBox3D" parent="DeskGeometry" unique_id=2138208271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97, 0.38842505, -0.485)
+use_collision = true
+size = Vector3(0.06, 0.8222656, 0.03)
+material = SubResource("StandardMaterial3D_pitpm")
+
+[node name="Leg2" type="CSGBox3D" parent="DeskGeometry" unique_id=1528855855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97, 0.3884579, 0.485)
+use_collision = true
+size = Vector3(0.06, 0.8222656, 0.03)
+material = SubResource("StandardMaterial3D_pitpm")
+
+[node name="Leg3" type="CSGBox3D" parent="DeskGeometry" unique_id=1754370181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97, 0.3884579, -0.485)
+use_collision = true
+size = Vector3(0.06, 0.8222656, 0.03)
+material = SubResource("StandardMaterial3D_pitpm")
+
+[node name="Leg4" type="CSGBox3D" parent="DeskGeometry" unique_id=1405945573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97, 0.38845783, 0.485)
+use_collision = true
+size = Vector3(0.06, 0.8222656, 0.03)
+material = SubResource("StandardMaterial3D_pitpm")
+
+[node name="DividerTopPos" type="Marker3D" parent="DeskGeometry" unique_id=510996284]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.837, -0.49752247)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeskGeometry" unique_id=1623738843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00091552734, 0.34742525, 0.010009766)
+shape = SubResource("BoxShape3D_pitpm")
+
+[node name="DefaultItems" type="Node3D" parent="." unique_id=519064018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83710825, 0)
+script = ExtResource("2_u0oef")
+
+[node name="MousePositions" type="Node3D" parent="DefaultItems" unique_id=1069310652]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.343684, 0.0059651732, 0.17661959)
+
+[node name="Marker3D" type="Marker3D" parent="DefaultItems/MousePositions" unique_id=2099075610]
+transform = Transform3D(0.94038016, 0, 0.34012514, 0, 1, 0, -0.34012514, 0, 0.94038016, 0.1034618, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="DefaultItems/MousePositions" unique_id=1128341511]
+transform = Transform3D(0.95541406, 0, -0.29526925, 0, 1, 0, 0.29526925, 0, 0.95541406, -0.06899881, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="DefaultItems/MousePositions" unique_id=1765457490]
+transform = Transform3D(0.86424655, 0, 0.5030685, 0, 1, 0, -0.5030685, 0, 0.86424655, 0.017226636, 0, 0.13616532)
+
+[node name="KeyboardPositions" type="Node3D" parent="DefaultItems" unique_id=27277610]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31705618, 0.0059651732, 0.19202465)
+
+[node name="Marker3D" type="Marker3D" parent="DefaultItems/KeyboardPositions" unique_id=1752071825]
+transform = Transform3D(0.8634372, 0, -0.50445634, 0, 1, 0, 0.50445634, 0, 0.8634372, 0, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="DefaultItems/KeyboardPositions" unique_id=159449528]
+transform = Transform3D(0.9986795, 0, -0.051375598, 0, 1, 0, 0.051375598, 0, 0.9986795, 0.1442484, 0, 0.048689187)
+
+[node name="Marker3D3" type="Marker3D" parent="DefaultItems/KeyboardPositions" unique_id=1049381102]
+transform = Transform3D(0.9986795, 0, -0.051375598, 0, 1, 0, 0.051375598, 0, 0.9986795, 0.11440122, 0, 0.122552395)
+
+[node name="MonitorPositions" type="Node3D" parent="DefaultItems" unique_id=342020322]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0059651732, 0)
+
+[node name="Marker3D" type="Marker3D" parent="DefaultItems/MonitorPositions" unique_id=1720612134]
+
+[node name="Marker3D2" type="Marker3D" parent="DefaultItems/MonitorPositions" unique_id=1082914153]
+transform = Transform3D(0.9227837, 0, 0.38531843, 0, 1, 0, -0.38531843, 0, 0.9227837, -0.249623, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="DefaultItems/MonitorPositions" unique_id=366003624]
+transform = Transform3D(0.9083733, 0, -0.41816026, 0, 1, 0, 0.41816026, 0, 0.9083733, 0.32113284, 0, 0)
+
+[node name="Clutter" type="Node3D" parent="." unique_id=1406095490]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55849946, 0.83710825, -0.18801439)
+
+[node name="Marker3D" type="Marker3D" parent="Clutter" unique_id=2132218331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12666345, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Clutter" unique_id=111023464]
+transform = Transform3D(0.8973012, 0, -0.44141874, 0, 1, 0, 0.44141874, 0, 0.8973012, -0.11364484, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Clutter" unique_id=1784954754]
+transform = Transform3D(0.9398972, 0, 0.3414577, 0, 1, 0, -0.3414577, 0, 0.9398972, 0.14179415, 0, 0.13509554)

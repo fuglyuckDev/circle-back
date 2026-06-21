@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bjcltvqcflcbu"]
+
+[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_dkwmw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0oef"]
+albedo_texture = ExtResource("1_dkwmw")
+uv1_triplanar = true
+
+[node name="Monitor" type="Node3D" unique_id=916941157]
+
+[node name="Screen" type="CSGBox3D" parent="." unique_id=1521125261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32603234, 0.08283318)
+use_collision = true
+size = Vector3(0.72, 0.41, 0.03)
+material = SubResource("StandardMaterial3D_u0oef")
+
+[node name="Arm" type="CSGBox3D" parent="." unique_id=422422663]
+transform = Transform3D(1, 0, 0, 0, 0.9634574, -0.26786166, 0, 0.26786166, 0.9634574, 0.0036315918, 0.18393631, 0.026958656)
+use_collision = true
+size = Vector3(0.17022705, 0.34973145, 0.022247314)
+material = SubResource("StandardMaterial3D_u0oef")
+
+[node name="Stand" type="CSGBox3D" parent="." unique_id=1305104238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002502501, 0.010558616, -0.0011703596)
+use_collision = true
+size = Vector3(0.22972412, 0.02, 0.21692505)
+material = SubResource("StandardMaterial3D_u0oef")
