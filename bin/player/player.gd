@@ -74,3 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			%FirstPersonView.rotate_x(-event.relative.y * look_sensitivity)
 			%FirstPersonView.rotation.x = clamp(%FirstPersonView.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	pass
+
+
+func _on_manger_collided_with_player(marker) -> void:
+	%FirstPerson.start_player_death(marker)

@@ -22,6 +22,7 @@ interactable="Can be interacted with"
 enemy="The MANAGER aaaaa!!!"
 roam_target="Where the bastard shall roam to"
 player="YOU! :D"
+lights="big light go brrrrrrrrrr"
 
 [input]
 
@@ -71,5 +72,7 @@ common/physics_interpolation=true
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
 scaling_3d/mode=5
 scaling_3d/scale=0.5

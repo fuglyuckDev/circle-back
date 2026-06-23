@@ -43,6 +43,7 @@ initial_state = NodePath("FirstPerson")
 metadata/_custom_type_script = "uid://81rtjubj5bf0"
 
 [node name="FirstPerson" type="Node" parent="Head/CameraState" unique_id=255456018 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
 script = ExtResource("4_p06ge")
 player = NodePath("../../..")
 amplitude = 0.005

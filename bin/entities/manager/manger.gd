@@ -16,6 +16,7 @@ var player_last_known_pos : Vector3
 
 signal player_position(player_pos:Vector3)
 signal search_position(search_pos:Vector3)
+signal collided_with_player(manager)
 
 func _physics_process(delta: float) -> void:
 	if %ManagerStates.current_state == %Persuing or %ManagerStates.current_state == %Searching:
@@ -36,6 +37,12 @@ func _physics_process(delta: float) -> void:
 		if move_dir.length_squared() > 0.01:
 			var target_transform = transform.looking_at(global_position - move_dir, Vector3.UP)
 			global_transform.basis = global_transform.basis.slerp(target_transform.basis, turn_speed * delta)
+	if %ManagerStates.current_state == %Idle:
+		%manager_model.manager_current_speed = 0
+	else:
+		%manager_model.manager_current_speed = Vector2(velocity.x,velocity.y).length()
+	%manager_model.manager_idle_speed = WALK_SPEED
+	%manager_model.manager_persue_speed = PERSUE_SPEED
 	_can_manager_see_player(is_player_in_range)
 	move_and_slide()
 
@@ -95,3 +102,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if _check_if_player_collision(body):
 		is_player_in_range = false
+
+
+func _on_kill_radius_body_entered(body: Node3D) -> void:
+	if body.get_groups().get(0) == &"player":
+		collided_with_player.emit(%manager_model.get_marker())
+		%manager_model.play_animtaion()
+
+func _on_light_flicker_body_entered(body: Node3D) -> void:
+	print(body)
+	if body.get_parent().get_groups().get(0) == &"lights":
+		body.get_parent().flicker_light()

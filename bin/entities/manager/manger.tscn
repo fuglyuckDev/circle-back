@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdrkwkmk6mq7b" path="res://bin/entities/manager/manger.gd" id="1_y43eu"]
 [ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_yhyfw"]
+[ext_resource type="PackedScene" uid="uid://d1o5ebh5gucsk" path="res://bin/entities/manager/manager_model.tscn" id="2_7pynp"]
 [ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_m6gxq"]
 [ext_resource type="Script" uid="uid://jrejgw5kuvcf" path="res://bin/entities/manager/idle.gd" id="4_qigyt"]
 [ext_resource type="Script" uid="uid://dcfcj08nhlwgq" path="res://bin/entities/manager/roaming.gd" id="5_qigyt"]
@@ -18,9 +19,11 @@ uv1_triplanar = true
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m6gxq"]
 material = SubResource("StandardMaterial3D_oxue7")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_pitpm"]
-radius = 0.13
-height = 0.57097656
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pitpm"]
+radius = 0.63671875
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pitpm"]
+radius = 2.3819091
 
 [node name="Manger" type="CharacterBody3D" unique_id=68780236 groups=["enemy"]]
 axis_lock_angular_x = true
@@ -32,7 +35,12 @@ turn_speed = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0115988, 0)
 shape = SubResource("CapsuleShape3D_y43eu")
 
+[node name="manager_model" parent="CollisionShape3D" unique_id=1700511510 instance=ExtResource("2_7pynp")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0115988, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1787120091]
+visible = false
 mesh = SubResource("CapsuleMesh_m6gxq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1011566277]
@@ -69,18 +77,6 @@ metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 wait_time = 5.0
 one_shot = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1300650774]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.7115989, 0)
-mesh = SubResource("CapsuleMesh_pitpm")
-
-[node name="ViewCone" type="Area3D" parent="." unique_id=2018983434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0115988, 0)
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="ViewCone" unique_id=859129492]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-depth = 2.0
-polygon = PackedVector2Array(0, 0, 5, 9, -5, 9)
-
 [node name="RaycastHead" type="RayCast3D" parent="." unique_id=1129349570]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7115989, 0)
 target_position = Vector3(0, 0, 5)
@@ -94,6 +90,26 @@ unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
+[node name="ViewCone" type="Area3D" parent="." unique_id=2018983434]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.99999964, 0, 1.0147134, 0)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="ViewCone" unique_id=859129492]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 2.0
+polygon = PackedVector2Array(0, 0, 5, 9, -5, 9)
+
+[node name="KillRadius" type="Area3D" parent="." unique_id=1204772149]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillRadius" unique_id=944640589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9031509, 0)
+shape = SubResource("CylinderShape3D_pitpm")
+
+[node name="light_flicker" type="Area3D" parent="." unique_id=1746755506]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="light_flicker" unique_id=285355077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4661446, 0)
+shape = SubResource("SphereShape3D_pitpm")
+
 [connection signal="player_position" from="." to="ManagerStates/Persuing" method="_on_manger_player_position"]
 [connection signal="search_position" from="." to="ManagerStates/Searching" method="_on_manger_search_position"]
 [connection signal="target_reached" from="NavigationAgent3D" to="ManagerStates/Roaming" method="_on_navigation_agent_3d_target_reached"]
@@ -104,3 +120,5 @@ one_shot = true
 [connection signal="timeout" from="IdleTime" to="ManagerStates/Idle" method="_on_idle_time_timeout"]
 [connection signal="body_entered" from="ViewCone" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="ViewCone" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="KillRadius" to="." method="_on_kill_radius_body_entered"]
+[connection signal="body_entered" from="light_flicker" to="." method="_on_light_flicker_body_entered"]
