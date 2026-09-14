@@ -27,3 +27,6 @@ func _on_complete_timer_timeout() -> void:
 	GameState.completed_tasks = GameState.completed_tasks + 1
 	SignalBus.task_complete.emit()
 	SignalBus.unmount_user.emit()
+
+# Added a comment for git push
+# Hello you sneaky dog how can you read this >:(
