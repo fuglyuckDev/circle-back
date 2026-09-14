@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://d1ak8oubj7qea"]
 
 [ext_resource type="Shader" uid="uid://ct1ia57g35cle" path="res://bin/world/objects/glass/wall/glass_wall.gdshader" id="1_xnaxi"]
-[ext_resource type="Shader" uid="uid://qk3i1thwyjcy" path="res://bin/world/objects/glass/wall/frosted_glass_wall.gdshader" id="2_tovdv"]
+[ext_resource type="Texture2D" uid="uid://cdx8qlmen1uoc" path="res://bin/world/objects/glass/wall/Texturelabs_Glass_135S.jpg" id="2_tovdv"]
+[ext_resource type="Shader" uid="uid://dros7y7he81h8" path="res://bin/shaders/frosted_glass_fast.gdshader" id="2_xnaxi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pitpm"]
 render_priority = 0
@@ -9,9 +10,10 @@ shader = ExtResource("1_xnaxi")
 shader_parameter/transparency_colour = Color(0.9647079, 0.9999997, 0.9999662, 1)
 shader_parameter/AirIOR = 1.0
 shader_parameter/IOR = 1.5
-shader_parameter/uv1_scale = Vector2(1, 1)
+shader_parameter/uv1_scale = Vector2(9.775, 1)
 shader_parameter/uv1_offset = Vector2(0, 0)
-shader_parameter/normalstrength = 1.0
+shader_parameter/normal_texture = ExtResource("2_tovdv")
+shader_parameter/normalstrength = 0.0499999988824
 shader_parameter/refraction_type = 1
 shader_parameter/simple_refraction_amount = 0.1
 shader_parameter/traced_refraction_far_clip = 50.0
@@ -21,20 +23,19 @@ shader_parameter/traced_ssr_far_clip = 50.0
 shader_parameter/traced_ssr_steps = 512
 shader_parameter/ssr_screen_fade = 0.05
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnaxi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfnf2"]
 render_priority = 0
-shader = ExtResource("2_tovdv")
-shader_parameter/albedo = Color(1, 1, 1, 0)
-shader_parameter/roughness = 0.15
-shader_parameter/refraction = 7.599999989338357e-07
-shader_parameter/refraction_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/normal_strength = 0.0
-shader_parameter/edge_color = Color(0, 0, 0, 1)
-shader_parameter/surface_contribution = 0.2
-shader_parameter/specular_contribution = 0.2
-shader_parameter/refraction_contribution = 1.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader = ExtResource("2_xnaxi")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color_coat = 0.01999999955296
+shader_parameter/oilyness = 0.0
+shader_parameter/rim_amount = 0.01999999955296
+shader_parameter/rim_shape = 3.27999993041076
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/refraction_strength = -2.2352000028647012e-08
+shader_parameter/blur_amount = 4.0
+shader_parameter/roughness_affect = 0.0
+shader_parameter/roughness = 0.2
 
 [node name="GlassWallMedium" type="Node3D" unique_id=37970590]
 
@@ -57,4 +58,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 autosmooth = true
 use_collision = true
 size = Vector3(10, 1, 0.01)
-material = SubResource("ShaderMaterial_xnaxi")
+material = SubResource("ShaderMaterial_wfnf2")

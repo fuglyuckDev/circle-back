@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	var next_location = nav_agent.get_next_path_position() # Calls the nav agent looking for the next path position, in this case, the function below (update_target_location) runs every physics tick to send the player's position to the nav agent
 	var new_velocity = (next_location - current_location).normalized() * SPEED # next_location - current_location to get direction of player, normalized keeps the length to 1. * SPEED for the speed of the bastard.
 	
-	velocity = velocity.move_toward(new_velocity, .25) # Honestly not sure what the .25 is. Docs don't help either lol
+	velocity = velocity.move_toward(new_velocity, 0.25) # Honestly not sure what the .25 is. Docs don't help either lol
 
 	var move_dir := Vector3(velocity.x, 0, velocity.z)
 	if look_at_target:
@@ -105,11 +105,10 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func _on_kill_radius_body_entered(body: Node3D) -> void:
-	if body.get_groups().get(0) == &"player":
+	if body.get_groups().size() > 0 and body.get_groups().get(0) == &"player":
 		collided_with_player.emit(%manager_model.get_marker())
 		%manager_model.play_animtaion()
 
 func _on_light_flicker_body_entered(body: Node3D) -> void:
-	print(body)
-	if body.get_parent().get_groups().get(0) == &"lights":
+	if body.get_groups().size() > 0 and body.get_parent().get_groups().get(0) == &"lights":
 		body.get_parent().flicker_light()

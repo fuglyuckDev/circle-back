@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://5xjg3ed5f5ix" path="res://bin/entities/manager/searching.gd" id="7_h17ng"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y43eu"]
+radius = 0.37402344
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxue7"]
 albedo_color = Color(1, 0.07450981, 0, 1)
@@ -22,8 +23,9 @@ material = SubResource("StandardMaterial3D_oxue7")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pitpm"]
 radius = 0.63671875
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_pitpm"]
-radius = 2.3819091
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mr0p1"]
+height = 1.2111816
+radius = 2.5600586
 
 [node name="Manger" type="CharacterBody3D" unique_id=68780236 groups=["enemy"]]
 axis_lock_angular_x = true
@@ -44,6 +46,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_m6gxq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1011566277]
+target_desired_distance = 1.2
 path_height_offset = 1.0
 
 [node name="ManagerStates" type="Node" parent="." unique_id=420953404 node_paths=PackedStringArray("initial_state")]
@@ -107,8 +110,8 @@ shape = SubResource("CylinderShape3D_pitpm")
 [node name="light_flicker" type="Area3D" parent="." unique_id=1746755506]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="light_flicker" unique_id=285355077]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4661446, 0)
-shape = SubResource("SphereShape3D_pitpm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8605537, 0)
+shape = SubResource("CylinderShape3D_mr0p1")
 
 [connection signal="player_position" from="." to="ManagerStates/Persuing" method="_on_manger_player_position"]
 [connection signal="search_position" from="." to="ManagerStates/Searching" method="_on_manger_search_position"]

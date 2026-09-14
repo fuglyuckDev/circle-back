@@ -11,10 +11,15 @@ config_version=5
 [application]
 
 config/name="circle-back"
-run/main_scene="uid://cvpkagxbs0krb"
+run/main_scene="uid://xpohdrm8d4iy"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*uid://0vmen0xll6hk"
+SignalBus="*uid://bfdw3ipw7xl8"
 
 [global_group]
 

@@ -36,7 +36,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_sj33g"]
 resource_name = "flicker_off"
-length = 5.0
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,10 +44,10 @@ tracks/0/path = NodePath("AreaLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.22786342, 0.32251438, 0.48377156, 0.75370204, 4.939378),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.22786342, 0.32251438, 0.48377156, 0.75370204, 9.933333, 9.952654),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0]
+"values": [1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,7 +56,7 @@ tracks/1/path = NodePath("CSGBox3D2:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.22786342, 0.32251438, 0.48377156, 0.75370204, 4.939378),
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.22786342, 0.32251438, 0.48377156, 0.75370204, 9.952654),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_pitpm"), SubResource("StandardMaterial3D_pitpm"), null, SubResource("StandardMaterial3D_pitpm"), null, SubResource("StandardMaterial3D_pitpm"), null, SubResource("StandardMaterial3D_pitpm")]

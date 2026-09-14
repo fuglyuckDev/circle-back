@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://davxv5xci2hkw"]
+
+[ext_resource type="Script" uid="uid://teajd7ltl56h" path="res://bin/ui/start_menu/start_menu_ui.gd" id="1_3n3mm"]
+[ext_resource type="AudioStream" uid="uid://d0mpmpykrw4wq" path="res://bin/sounds/ui/buttonrollover.wav" id="2_4n33i"]
+[ext_resource type="Script" uid="uid://whx8j8u0yfe2" path="res://bin/ui/start_menu/start.gd" id="2_fddy1"]
+[ext_resource type="Script" uid="uid://cn1gyhv4fooh3" path="res://bin/ui/start_menu/quit.gd" id="3_4hjxs"]
+[ext_resource type="AudioStream" uid="uid://dhgrjaiirwwgh" path="res://bin/sounds/ui/buttonclickrelease.wav" id="3_4n33i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4qru"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_esmnr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbnax"]
+
+[sub_resource type="Theme" id="Theme_pitpm"]
+Button/colors/font_color = Color(0.6022627, 0.6022627, 0.6022627, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxEmpty_m4qru")
+Button/styles/normal = SubResource("StyleBoxEmpty_esmnr")
+Button/styles/pressed = SubResource("StyleBoxEmpty_tbnax")
+
+[node name="StartMenuUi" type="Control" unique_id=1311842879]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3n3mm")
+
+[node name="GameTitle" type="Label" parent="." unique_id=1693122168]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 235.0
+offset_right = 341.0
+offset_bottom = 294.0
+theme_override_font_sizes/font_size = 43
+text = "Circle Back"
+
+[node name="Start" type="Button" parent="." unique_id=678272245]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 309.0
+offset_right = 205.0
+offset_bottom = 340.0
+theme = SubResource("Theme_pitpm")
+text = "Start Game"
+alignment = 0
+script = ExtResource("2_fddy1")
+
+[node name="Quit" type="Button" parent="." unique_id=721789663]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 341.0
+offset_right = 205.0
+offset_bottom = 372.0
+theme = SubResource("Theme_pitpm")
+text = "Quit"
+alignment = 0
+script = ExtResource("3_4hjxs")
+
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="." unique_id=147365377]
+unique_name_in_owner = true
+stream = ExtResource("2_4n33i")
+max_polyphony = 5
+
+[node name="ButtonPressed" type="AudioStreamPlayer2D" parent="." unique_id=1714207617]
+unique_name_in_owner = true
+stream = ExtResource("3_4n33i")
+
+[connection signal="button_down" from="Start" to="Start" method="_on_button_down"]
+[connection signal="button_down" from="Quit" to="Quit" method="_on_button_down"]

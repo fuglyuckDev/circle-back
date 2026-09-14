@@ -9,6 +9,7 @@ func _physics_process(delta: float) -> void:
 
 func _handle_walk(current, walk):
 	var normalised_speed = current / walk
+
 	%AnimationTree["parameters/BlendSpace1D/blend_position"] = normalised_speed
 	if normalised_speed > 1.0:
 		%AnimationTree["parameters/TimeScale/scale"] = 3.0
@@ -20,3 +21,8 @@ func get_marker():
 
 func play_animtaion():
 	%AnimationTree["parameters/Kill/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "rig_001_Kill_001":
+		GameState.end_game()

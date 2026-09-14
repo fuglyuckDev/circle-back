@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-
-
 var stamina : float
 var default_head_height = 1.431
 var crouch_height = default_head_height / 2
@@ -60,10 +58,10 @@ func _sprint(delta) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	#Capture mouse events if clicked, exit with esc
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#if event is InputEventMouseButton:
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#elif event.is_action_pressed("ui_cancel"):
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Read mouseinput and multiply by look sensitivity to move camera
 	#Left / right rotates body left and right
 	#up / down rotates camera
@@ -75,6 +73,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			%FirstPersonView.rotation.x = clamp(%FirstPersonView.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	pass
 
+func revert_first_person() -> void:
+	%CameraState.change_state("FirstPerson")
 
 func _on_manger_collided_with_player(marker) -> void:
+	if %CameraState.current_state == %Controlled:
+		revert_first_person()
 	%FirstPerson.start_player_death(marker)

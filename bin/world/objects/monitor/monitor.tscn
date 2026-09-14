@@ -1,18 +1,46 @@
 [gd_scene format=3 uid="uid://bjcltvqcflcbu"]
 
+[ext_resource type="Script" uid="uid://cue3erg6u0ipu" path="res://bin/world/objects/monitor/monitor.gd" id="1_2y7eg"]
 [ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_dkwmw"]
+[ext_resource type="Texture2D" uid="uid://o3ugsbpimyuy" path="res://bin/world/objects/monitor/windows-xp-3.png" id="3_hh1fw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0oef"]
 albedo_texture = ExtResource("1_dkwmw")
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esmnr"]
+emission_enabled = true
+emission = Color(2.055, 2.055, 2.055, 1)
+emission_energy_multiplier = 0.12
+emission_operator = 1
+emission_texture = ExtResource("3_hh1fw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pitpm"]
+material = SubResource("StandardMaterial3D_esmnr")
+size = Vector2(0.685, 0.36)
+
 [node name="Monitor" type="Node3D" unique_id=916941157]
+script = ExtResource("1_2y7eg")
 
 [node name="Screen" type="CSGBox3D" parent="." unique_id=1521125261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32603234, 0.08283318)
 use_collision = true
 size = Vector3(0.72, 0.41, 0.03)
 material = SubResource("StandardMaterial3D_u0oef")
+
+[node name="Screen_on" type="Node3D" parent="Screen" unique_id=2107940102]
+unique_name_in_owner = true
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Screen/Screen_on" unique_id=101331243]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.007535428, 0.015453011)
+mesh = SubResource("PlaneMesh_pitpm")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="Screen/Screen_on" unique_id=748715864]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.03303647)
+light_color = Color(0.7882353, 1, 1, 1)
+area_range = 1.701
+area_size = Vector2(0.6829672, 0.3645693)
 
 [node name="Arm" type="CSGBox3D" parent="." unique_id=422422663]
 transform = Transform3D(1, 0, 0, 0, 0.9634574, -0.26786166, 0, 0.26786166, 0.9634574, 0.0036315918, 0.18393631, 0.026958656)
@@ -25,3 +53,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002502501, 0.010558616, -0
 use_collision = true
 size = Vector3(0.22972412, 0.02, 0.21692505)
 material = SubResource("StandardMaterial3D_u0oef")
+
+[node name="CameraTarget" type="Marker3D" parent="." unique_id=1525796675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00080153346, 0.32505366, 0.6057268)
+
+[node name="Complete_timer" type="Timer" parent="." unique_id=1056187401]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Complete_timer" to="." method="_on_complete_timer_timeout"]
