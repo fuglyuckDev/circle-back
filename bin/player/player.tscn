@@ -5,6 +5,13 @@
 [ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_qiuia"]
 [ext_resource type="Script" uid="uid://b66ud7stp5ic3" path="res://bin/player/first_person.gd" id="4_p06ge"]
 [ext_resource type="Script" uid="uid://c4elbk0h87oml" path="res://bin/player/controlled.gd" id="5_fg1fx"]
+[ext_resource type="AudioStream" uid="uid://cp7bxbegiutwk" path="res://bin/sounds/player/feets/softshoe_generic1.wav" id="6_hnmk5"]
+[ext_resource type="AudioStream" uid="uid://cgbj0d14qhqrq" path="res://bin/sounds/player/feets/softshoe_generic2.wav" id="7_tet1w"]
+[ext_resource type="AudioStream" uid="uid://ba1ds5hdygiu5" path="res://bin/sounds/player/feets/softshoe_generic4.wav" id="8_cv8kb"]
+[ext_resource type="AudioStream" uid="uid://3tvj1kba5uar" path="res://bin/sounds/player/feets/softshoe_generic5.wav" id="9_p5htp"]
+[ext_resource type="AudioStream" uid="uid://haf6ms4fuf2r" path="res://bin/sounds/player/feets/softshoe_generic6.wav" id="10_l15dy"]
+[ext_resource type="AudioStream" uid="uid://cfhwj5bs8hffa" path="res://bin/sounds/player/feets/softshoe_generic7.wav" id="11_melqe"]
+[ext_resource type="AudioStream" uid="uid://yj8s32d0ay4i" path="res://bin/sounds/player/feets/softshoe_generic8.wav" id="12_i04xk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gw43"]
 radius = 0.4
@@ -12,6 +19,16 @@ height = 1.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_om5rw"]
 height = 1.8
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pitpm"]
+streams_count = 7
+stream_0/stream = ExtResource("6_hnmk5")
+stream_1/stream = ExtResource("7_tet1w")
+stream_2/stream = ExtResource("8_cv8kb")
+stream_3/stream = ExtResource("9_p5htp")
+stream_4/stream = ExtResource("10_l15dy")
+stream_5/stream = ExtResource("11_melqe")
+stream_6/stream = ExtResource("12_i04xk")
 
 [node name="Player" type="CharacterBody3D" unique_id=1936977173 groups=["player"]]
 script = ExtResource("1_om5rw")
@@ -65,5 +82,10 @@ mesh = SubResource("CapsuleMesh_om5rw")
 [node name="CameraTarget" type="Marker3D" parent="." unique_id=1607624160]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4308817, 0)
+
+[node name="Feets" type="AudioStreamPlayer3D" parent="." unique_id=224109721]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_pitpm")
+volume_db = -30.0
 
 [connection signal="interacted_with" from="Head/FirstPersonView/InteractionRay" to="Head/CameraState/FirstPerson" method="_on_interaction_ray_interacted_with"]

@@ -6,7 +6,6 @@ signal enter_idle
 signal exit_idle
 
 func enter():
-	print("Idle")
 	enter_idle.emit()
 	targets = get_tree().get_nodes_in_group(&"roam_target")
 	timer.start()

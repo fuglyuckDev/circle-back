@@ -14,8 +14,9 @@ func _ready() -> void:
 			_generate_useable_monitor()
 
 func interact() -> void:
-	print("Interacted!")
 	%Complete_timer.start()
+	%MonitorScreen.interacted()
+	%Typing.play()
 
 func _generate_useable_monitor() -> void:
 	add_to_group("interactable")

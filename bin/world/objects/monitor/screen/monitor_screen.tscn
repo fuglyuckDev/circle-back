@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bl4lwfwjh6h8o"]
+
+[ext_resource type="Texture2D" uid="uid://o3ugsbpimyuy" path="res://bin/world/objects/monitor/windows-xp-3.png" id="1_458uh"]
+[ext_resource type="Script" uid="uid://dj1lx0icwwaih" path="res://bin/world/objects/monitor/screen/monitor_screen.gd" id="1_aujfn"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_esmnr"]
+file = "res://bin/world/objects/monitor/github_asset.ogv"
+
+[node name="MonitorScreen" type="Control" unique_id=1571072003]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aujfn")
+
+[node name="WindowsXp3" type="Sprite2D" parent="." unique_id=1826368773]
+position = Vector2(325.00003, 256)
+scale = Vector2(0.20195314, 0.35555556)
+texture = ExtResource("1_458uh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=456566788]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 199.11
+offset_top = 123.955
+offset_right = 1607.1111
+offset_bottom = 691.95496
+scale = Vector2(0.13, 0.26)
+offset_transform_enabled = true
+stream = SubResource("VideoStreamTheora_esmnr")

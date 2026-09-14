@@ -3,7 +3,7 @@ extends State
 var current_target : Marker3D
 
 func enter():
-	print("Roaming...")
+	pass
 
 func physics_update(_delta: float):
 	if current_target:

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cfhwj5bs8hffa"
-path="res://.godot/imported/softshoe_generic7.wav-2c6e8cfeb5a50e648049f682048aa181.sample"
+path="res://.godot/imported/softshoe_generic7.wav-88ef6bf67479bd0f0fd415e3310dd2d5.sample"
 
 [deps]
 
-source_file="res://bin/sounds/player/softshoe_generic7.wav"
-dest_files=["res://.godot/imported/softshoe_generic7.wav-2c6e8cfeb5a50e648049f682048aa181.sample"]
+source_file="res://bin/sounds/player/feets/softshoe_generic7.wav"
+dest_files=["res://.godot/imported/softshoe_generic7.wav-88ef6bf67479bd0f0fd415e3310dd2d5.sample"]
 
 [params]
 

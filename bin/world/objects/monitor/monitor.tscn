@@ -2,20 +2,26 @@
 
 [ext_resource type="Script" uid="uid://cue3erg6u0ipu" path="res://bin/world/objects/monitor/monitor.gd" id="1_2y7eg"]
 [ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_dkwmw"]
-[ext_resource type="Texture2D" uid="uid://o3ugsbpimyuy" path="res://bin/world/objects/monitor/windows-xp-3.png" id="3_hh1fw"]
+[ext_resource type="PackedScene" uid="uid://bl4lwfwjh6h8o" path="res://bin/world/objects/monitor/screen/monitor_screen.tscn" id="3_hh1fw"]
+[ext_resource type="AudioStream" uid="uid://ba7qn6ghknagd" path="res://bin/sounds/player/keboard_noises.wav" id="4_8pl46"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0oef"]
 albedo_texture = ExtResource("1_dkwmw")
 uv1_triplanar = true
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_6oa52"]
+viewport_path = NodePath("Screen/Screen_on/SubViewport")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esmnr"]
+resource_local_to_scene = true
 emission_enabled = true
-emission = Color(2.055, 2.055, 2.055, 1)
-emission_energy_multiplier = 0.12
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.54
 emission_operator = 1
-emission_texture = ExtResource("3_hh1fw")
+emission_texture = SubResource("ViewportTexture_6oa52")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pitpm"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_esmnr")
 size = Vector2(0.685, 0.36)
 
@@ -42,6 +48,11 @@ light_color = Color(0.7882353, 1, 1, 1)
 area_range = 1.701
 area_size = Vector2(0.6829672, 0.3645693)
 
+[node name="SubViewport" type="SubViewport" parent="Screen/Screen_on" unique_id=1979667774]
+
+[node name="MonitorScreen" parent="Screen/Screen_on/SubViewport" unique_id=1571072003 instance=ExtResource("3_hh1fw")]
+unique_name_in_owner = true
+
 [node name="Arm" type="CSGBox3D" parent="." unique_id=422422663]
 transform = Transform3D(1, 0, 0, 0, 0.9634574, -0.26786166, 0, 0.26786166, 0.9634574, 0.0036315918, 0.18393631, 0.026958656)
 use_collision = true
@@ -61,5 +72,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00080153346, 0.32505366, 0
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
+
+[node name="Typing" type="AudioStreamPlayer3D" parent="." unique_id=1414339462]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014109403, 0.22643992)
+stream = ExtResource("4_8pl46")
+volume_db = -40.0
 
 [connection signal="timeout" from="Complete_timer" to="." method="_on_complete_timer_timeout"]

@@ -59,7 +59,6 @@ func _over_persue():
 				player_position.emit(player.transform.origin)
 				player_last_known_pos = player.transform.origin
 			else:
-				print("Player last known pos: ", player_last_known_pos)
 				%ManagerStates.change_state("Searching")
 				search_position.emit(player_last_known_pos)
 
