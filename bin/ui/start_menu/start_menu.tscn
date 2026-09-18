@@ -100,60 +100,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7416363, -0.5047164, -4.357
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60284853, -0.5047164, 1.8831823)
 
 [node name="Desks" type="Node3D" parent="NavigationRegion3D" unique_id=1304211884]
+unique_name_in_owner = true
 
-[node name="Desk" parent="NavigationRegion3D/Desks" unique_id=1296511605 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.582437, 0, -6.3215094)
+[node name="DeskGroup" type="Node3D" parent="NavigationRegion3D/Desks" unique_id=1396152188]
 
-[node name="Desk2" parent="NavigationRegion3D/Desks" unique_id=251498825 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.582437, 0, -6.3215094)
-
-[node name="Desk3" parent="NavigationRegion3D/Desks" unique_id=667346904 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.582437, 0, -6.3215094)
-
-[node name="Desk4" parent="NavigationRegion3D/Desks" unique_id=909629247 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.582437, 0, -7.3215094)
-
-[node name="Desk5" parent="NavigationRegion3D/Desks" unique_id=811451061 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.582437, 0, -7.321509)
-
-[node name="Desk6" parent="NavigationRegion3D/Desks" unique_id=284471331 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.582437, 0, -7.321509)
-
-[node name="Desk13" parent="NavigationRegion3D/Desks" unique_id=395599831 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.582437, 0, -1.0462513)
-
-[node name="Desk14" parent="NavigationRegion3D/Desks" unique_id=1665424637 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.582437, 0, -1.0462513)
-
-[node name="Desk15" parent="NavigationRegion3D/Desks" unique_id=1754785887 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.582437, 0, -1.0462513)
-
-[node name="Desk16" parent="NavigationRegion3D/Desks" unique_id=1470423115 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.582437, 0, -2.0462513)
-
-[node name="Desk17" parent="NavigationRegion3D/Desks" unique_id=1026543418 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.582437, 0, -2.0462508)
-
-[node name="Desk18" parent="NavigationRegion3D/Desks" unique_id=1197657088 instance=ExtResource("5_mfr3q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.582437, 0, -2.0462508)
-
-[node name="Desk7" parent="NavigationRegion3D/Desks" unique_id=380067919 instance=ExtResource("5_mfr3q")]
+[node name="Desk7" parent="NavigationRegion3D/Desks/DeskGroup" unique_id=1296511605 instance=ExtResource("5_mfr3q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.582437, 0, 4.8340325)
 
-[node name="Desk8" parent="NavigationRegion3D/Desks" unique_id=231462046 instance=ExtResource("5_mfr3q")]
+[node name="Desk8" parent="NavigationRegion3D/Desks/DeskGroup" unique_id=2064832699 instance=ExtResource("5_mfr3q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.582437, 0, 4.8340325)
 
-[node name="Desk9" parent="NavigationRegion3D/Desks" unique_id=735807317 instance=ExtResource("5_mfr3q")]
+[node name="Desk9" parent="NavigationRegion3D/Desks/DeskGroup" unique_id=149640296 instance=ExtResource("5_mfr3q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.582437, 0, 4.8340325)
 
-[node name="Desk10" parent="NavigationRegion3D/Desks" unique_id=1753152055 instance=ExtResource("5_mfr3q")]
+[node name="Desk10" parent="NavigationRegion3D/Desks/DeskGroup" unique_id=1818166182 instance=ExtResource("5_mfr3q")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.582437, 0, 3.8340325)
 
-[node name="Desk11" parent="NavigationRegion3D/Desks" unique_id=1681574172 instance=ExtResource("5_mfr3q")]
+[node name="Desk11" parent="NavigationRegion3D/Desks/DeskGroup" unique_id=1354146338 instance=ExtResource("5_mfr3q")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.582437, 0, 3.834033)
 
-[node name="Desk12" parent="NavigationRegion3D/Desks" unique_id=111830867 instance=ExtResource("5_mfr3q")]
+[node name="Desk12" parent="NavigationRegion3D/Desks/DeskGroup" unique_id=1719214269 instance=ExtResource("5_mfr3q")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.582437, 0, 3.834033)
+
+[node name="DeskGroup2" type="Node3D" parent="NavigationRegion3D/Desks" unique_id=55923319]
+
+[node name="Desk13" parent="NavigationRegion3D/Desks/DeskGroup2" unique_id=886476954 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.582437, 0, -1.0462513)
+
+[node name="Desk14" parent="NavigationRegion3D/Desks/DeskGroup2" unique_id=1946947748 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.582437, 0, -1.0462513)
+
+[node name="Desk15" parent="NavigationRegion3D/Desks/DeskGroup2" unique_id=1964358971 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.582437, 0, -1.0462513)
+
+[node name="Desk16" parent="NavigationRegion3D/Desks/DeskGroup2" unique_id=2090184214 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.582437, 0, -2.0462513)
+
+[node name="Desk17" parent="NavigationRegion3D/Desks/DeskGroup2" unique_id=1239975117 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.582437, 0, -2.0462508)
+
+[node name="Desk18" parent="NavigationRegion3D/Desks/DeskGroup2" unique_id=496283763 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.582437, 0, -2.0462508)
+
+[node name="DeskGroup3" type="Node3D" parent="NavigationRegion3D/Desks" unique_id=1725441377]
+
+[node name="Desk" parent="NavigationRegion3D/Desks/DeskGroup3" unique_id=2099211454 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.582437, 0, -6.3215094)
+
+[node name="Desk2" parent="NavigationRegion3D/Desks/DeskGroup3" unique_id=1153907875 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.582437, 0, -6.3215094)
+
+[node name="Desk3" parent="NavigationRegion3D/Desks/DeskGroup3" unique_id=1474311300 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.582437, 0, -6.3215094)
+
+[node name="Desk4" parent="NavigationRegion3D/Desks/DeskGroup3" unique_id=1764664604 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.582437, 0, -7.3215094)
+
+[node name="Desk5" parent="NavigationRegion3D/Desks/DeskGroup3" unique_id=803404974 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.582437, 0, -7.321509)
+
+[node name="Desk6" parent="NavigationRegion3D/Desks/DeskGroup3" unique_id=1302682229 instance=ExtResource("5_mfr3q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.582437, 0, -7.321509)
 
 [node name="Walls" type="Node3D" parent="NavigationRegion3D" unique_id=1099538587]
 

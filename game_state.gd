@@ -1,15 +1,15 @@
 extends Node
 
-var useable_monitors : int = 8
+var useable_monitors : int = 0
 var completed_tasks : int = 0
-var total_tasks : int = 8
 
 func _ready() -> void:
 	SignalBus.task_complete.connect(_on_task_complete)
 
 func _on_task_complete():
 	completed_tasks + 1
-	if completed_tasks == 8:
+	print("completed: ", completed_tasks, " Tasks, ", useable_monitors, " Tasks Left.")
+	if completed_tasks == useable_monitors:
 		end_game()
 
 func end_game():

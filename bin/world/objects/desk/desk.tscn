@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d0snmdpat4t0k"]
 
+[ext_resource type="Script" uid="uid://bk3fv30b42yed" path="res://bin/world/objects/desk/desk.gd" id="1_cares"]
 [ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_qpdyk"]
 [ext_resource type="Script" uid="uid://chipp4l22k4ro" path="res://bin/world/objects/desk/default_items.gd" id="2_u0oef"]
 
@@ -14,6 +15,7 @@ uv1_triplanar = true
 size = Vector3(1.9835205, 0.9250488, 0.97998047)
 
 [node name="Desk" type="Node3D" unique_id=1296511605]
+script = ExtResource("1_cares")
 
 [node name="DeskGeometry" type="StaticBody3D" parent="." unique_id=282078881]
 
