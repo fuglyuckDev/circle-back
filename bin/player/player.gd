@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		_crouch(delta)
 		move_and_slide()
 
-func _crouch(delta):
+func _crouch(_delta):
 	var tween = create_tween()
 	if Input.is_action_pressed("crouch"):
 		tween.tween_property(%Head, "position:y", crouch_height, 0.2)

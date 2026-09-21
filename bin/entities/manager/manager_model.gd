@@ -4,7 +4,7 @@ var manager_current_speed : float
 var manager_idle_speed : float
 var manager_persue_speed : float
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_handle_walk(manager_current_speed, manager_idle_speed)
 
 func _handle_walk(current, walk):

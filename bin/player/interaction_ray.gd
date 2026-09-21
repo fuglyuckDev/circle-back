@@ -2,7 +2,7 @@ extends RayCast3D
 
 signal interacted_with(parent_object)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		var interaction_target = self.get_collider()
 		if interaction_target:

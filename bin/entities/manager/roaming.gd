@@ -1,6 +1,7 @@
 extends State
 
 var current_target : Marker3D
+@export var manager : CharacterBody3D
 
 func enter():
 	pass
@@ -14,3 +15,11 @@ func _on_navigation_agent_3d_target_reached() -> void:
 
 func exit():
 	current_target = null
+
+func _on_stuck_time_timeout() -> void:
+	current_target = %Pos
+	%FixTime.start()
+
+
+func _on_fix_time_timeout() -> void:
+	%ManagerStates.change_state("idle")

@@ -61,9 +61,10 @@ script = ExtResource("4_qigyt")
 timer = NodePath("../../IdleTime")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
-[node name="Roaming" type="Node" parent="ManagerStates" unique_id=126092733]
+[node name="Roaming" type="Node" parent="ManagerStates" unique_id=126092733 node_paths=PackedStringArray("manager")]
 unique_name_in_owner = true
 script = ExtResource("5_qigyt")
+manager = NodePath("../..")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="Persuing" type="Node" parent="ManagerStates" unique_id=591529169]
@@ -77,7 +78,7 @@ script = ExtResource("7_h17ng")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="IdleTime" type="Timer" parent="." unique_id=550696328]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [node name="RaycastHead" type="RayCast3D" parent="." unique_id=1129349570]
@@ -113,6 +114,21 @@ shape = SubResource("CylinderShape3D_pitpm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8605537, 0)
 shape = SubResource("CylinderShape3D_mr0p1")
 
+[node name="StuckTime" type="Timer" parent="." unique_id=347944757]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="FixTime" type="Timer" parent="." unique_id=1981635719]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="FixPos" type="Node3D" parent="." unique_id=1007322079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4476359, 0, -0.47850132)
+
+[node name="Pos" type="Marker3D" parent="FixPos" unique_id=733159186]
+unique_name_in_owner = true
+
 [connection signal="player_position" from="." to="ManagerStates/Persuing" method="_on_manger_player_position"]
 [connection signal="search_position" from="." to="ManagerStates/Searching" method="_on_manger_search_position"]
 [connection signal="target_reached" from="NavigationAgent3D" to="ManagerStates/Roaming" method="_on_navigation_agent_3d_target_reached"]
@@ -125,3 +141,5 @@ shape = SubResource("CylinderShape3D_mr0p1")
 [connection signal="body_exited" from="ViewCone" to="." method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="KillRadius" to="." method="_on_kill_radius_body_entered"]
 [connection signal="body_entered" from="light_flicker" to="." method="_on_light_flicker_body_entered"]
+[connection signal="timeout" from="StuckTime" to="ManagerStates/Roaming" method="_on_stuck_time_timeout"]
+[connection signal="timeout" from="FixTime" to="ManagerStates/Roaming" method="_on_fix_time_timeout"]
