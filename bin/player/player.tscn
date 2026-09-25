@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wootbv5vgsb3" path="res://bin/player/player.gd" id="1_om5rw"]
 [ext_resource type="Script" uid="uid://dxbadn6yq672b" path="res://bin/player/interaction_ray.gd" id="2_wkpl8"]
 [ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_qiuia"]
+[ext_resource type="AudioStream" uid="uid://d0qcev4vd6qd2" path="res://bin/world/sounds/ambience/Horror Ambiance.mp3" id="3_tet1w"]
 [ext_resource type="Script" uid="uid://b66ud7stp5ic3" path="res://bin/player/first_person.gd" id="4_p06ge"]
 [ext_resource type="Script" uid="uid://c4elbk0h87oml" path="res://bin/player/controlled.gd" id="5_fg1fx"]
 [ext_resource type="AudioStream" uid="uid://cp7bxbegiutwk" path="res://bin/sounds/player/feets/softshoe_generic1.wav" id="6_hnmk5"]
@@ -52,6 +53,14 @@ fov = 37.849285
 [node name="InteractionRay" type="RayCast3D" parent="Head/FirstPersonView" unique_id=895380153]
 target_position = Vector3(0, 0, -2)
 script = ExtResource("2_wkpl8")
+
+[node name="Ambience" type="AudioStreamPlayer3D" parent="Head/FirstPersonView" unique_id=356273029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01667583, 0)
+stream = ExtResource("3_tet1w")
+volume_db = -80.0
+autoplay = true
+attenuation_filter_cutoff_hz = 20500.0
+parameters/looping = true
 
 [node name="CameraState" type="Node" parent="Head" unique_id=928013051 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true

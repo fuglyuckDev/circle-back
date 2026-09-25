@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://whx8j8u0yfe2" path="res://bin/ui/start_menu/start.gd" id="2_fddy1"]
 [ext_resource type="Script" uid="uid://cn1gyhv4fooh3" path="res://bin/ui/start_menu/quit.gd" id="3_4hjxs"]
 [ext_resource type="AudioStream" uid="uid://dhgrjaiirwwgh" path="res://bin/sounds/ui/buttonclickrelease.wav" id="3_4n33i"]
+[ext_resource type="AudioStream" uid="uid://d0qcev4vd6qd2" path="res://bin/world/sounds/ambience/Horror Ambiance.mp3" id="6_xij3w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4qru"]
 
@@ -68,6 +69,13 @@ max_polyphony = 5
 [node name="ButtonPressed" type="AudioStreamPlayer2D" parent="." unique_id=1714207617]
 unique_name_in_owner = true
 stream = ExtResource("3_4n33i")
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="." unique_id=1430926385]
+unique_name_in_owner = true
+stream = ExtResource("6_xij3w")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="button_down" from="Start" to="Start" method="_on_button_down"]
 [connection signal="button_down" from="Quit" to="Quit" method="_on_button_down"]

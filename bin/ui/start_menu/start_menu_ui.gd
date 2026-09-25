@@ -2,7 +2,7 @@ extends Control
 
 func _ready() -> void:
 	var buttons = _get_buttons()
-	
+	%Ambience.play()
 
 func _get_buttons():
 	for child in get_children():

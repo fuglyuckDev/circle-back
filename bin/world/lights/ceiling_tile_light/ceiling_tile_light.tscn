@@ -8,7 +8,7 @@ emission = Color(0.8509804, 0.972549, 1, 1)
 emission_energy_multiplier = 1.76
 
 [sub_resource type="Animation" id="Animation_a703m"]
-length = 0.001
+length = 8.766666
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

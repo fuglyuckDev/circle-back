@@ -115,5 +115,5 @@ func _on_kill_radius_body_entered(body: Node3D) -> void:
 		%manager_model.play_animtaion()
 
 func _on_light_flicker_body_entered(body: Node3D) -> void:
-	if body.get_groups().size() > 0 and body.get_parent().get_groups().get(0) == &"lights":
+	if body.get_parent().get_groups().size() > 0 and body.get_parent().get_groups().get(0) == &"lights":
 		body.get_parent().flicker_light()

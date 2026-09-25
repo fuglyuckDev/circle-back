@@ -31,6 +31,7 @@ radius = 2.5600586
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_y43eu")
+PERSUE_SPEED = 6.0
 turn_speed = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=693479446]
