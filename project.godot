@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 GameState="*uid://0vmen0xll6hk"
 SignalBus="*uid://bfdw3ipw7xl8"
 
+[display]
+
+window/size/mode=4
+
 [global_group]
 
 interactable="Can be interacted with"

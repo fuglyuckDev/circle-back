@@ -1,8 +1,23 @@
 [gd_scene format=3 uid="uid://dat5t6sjjc0fs"]
 
+[ext_resource type="ArrayOccluder3D" uid="uid://dnefbelqjrffh" path="res://bin/world/objects/drywall/drywall_medium.occ" id="1_hxj2k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pitpm"]
+size = Vector3(10, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
+size = Vector3(10, 3, 0.2)
+
 [node name="DrywallMedium" type="Node3D" unique_id=1214906866]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=354887061]
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=322712590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-use_collision = true
-size = Vector3(10, 3, 0.2)
+occluder = ExtResource("1_hxj2k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OccluderInstance3D" unique_id=607775083]
+mesh = SubResource("BoxMesh_pitpm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="OccluderInstance3D/MeshInstance3D" unique_id=2125555285]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OccluderInstance3D/MeshInstance3D/StaticBody3D" unique_id=432106402]
+shape = SubResource("BoxShape3D_pitpm")

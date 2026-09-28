@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://yyoy8obx7yd6"
+path="res://.godot/imported/accumulation_shader.glsl-0fe16a79565b83f32a898c869c7cf4e1.res"
+
+[deps]
+
+source_file="res://bin/shaders/accumulation_shader.glsl"
+dest_files=["res://.godot/imported/accumulation_shader.glsl-0fe16a79565b83f32a898c869c7cf4e1.res"]
+
+[params]
+

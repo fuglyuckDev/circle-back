@@ -43,12 +43,6 @@ func _physics_process(delta: float) -> void:
 		%manager_model.manager_current_speed = 0
 	else:
 		%manager_model.manager_current_speed = Vector2(velocity.x,velocity.y).length()
-		if %ManagerStates.current_state == %Roaming or %ManagerStates.current_state == %Persuing:
-			if current_velocity < 0.26:
-				if %StuckTime.is_stopped():
-					%StuckTime.start()
-			else:
-				%StuckTime.stop()
 	%manager_model.manager_idle_speed = WALK_SPEED
 	%manager_model.manager_persue_speed = PERSUE_SPEED
 	_can_manager_see_player(is_player_in_range)
@@ -56,8 +50,6 @@ func _physics_process(delta: float) -> void:
 
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
-
-
 
 func _over_persue():
 	if %ManagerStates.current_state == %Persuing:
@@ -108,7 +100,6 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 	if _check_if_player_collision(body):
 		is_player_in_range = false
 
-
 func _on_kill_radius_body_entered(body: Node3D) -> void:
 	if body.get_groups().size() > 0 and body.get_groups().get(0) == &"player":
 		collided_with_player.emit(%manager_model.get_marker())
@@ -117,3 +108,6 @@ func _on_kill_radius_body_entered(body: Node3D) -> void:
 func _on_light_flicker_body_entered(body: Node3D) -> void:
 	if body.get_parent().get_groups().size() > 0 and body.get_parent().get_groups().get(0) == &"lights":
 		body.get_parent().flicker_light()
+
+func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
+	SignalBus.enemy_enter_view.emit(self.global_position)

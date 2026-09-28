@@ -37,6 +37,9 @@ shader_parameter/blur_amount = 4.0
 shader_parameter/roughness_affect = 0.0
 shader_parameter/roughness = 0.15
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
+size = Vector3(20, 3, 0.5)
+
 [node name="GlassWallLarge" type="Node3D" unique_id=37970590]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1366260250]
@@ -59,3 +62,9 @@ autosmooth = true
 use_collision = true
 size = Vector3(20, 1, 0.01)
 material = SubResource("ShaderMaterial_xnaxi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=817692880]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1142863928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_pitpm")

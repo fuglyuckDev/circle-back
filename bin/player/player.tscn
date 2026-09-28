@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dnbuxacpfltc4"]
 
 [ext_resource type="Script" uid="uid://wootbv5vgsb3" path="res://bin/player/player.gd" id="1_om5rw"]
+[ext_resource type="Script" uid="uid://caiylw20pv48w" path="res://bin/shaders/accum_blur_effect.gd" id="2_l15dy"]
 [ext_resource type="Script" uid="uid://dxbadn6yq672b" path="res://bin/player/interaction_ray.gd" id="2_wkpl8"]
 [ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_qiuia"]
 [ext_resource type="AudioStream" uid="uid://d0qcev4vd6qd2" path="res://bin/world/sounds/ambience/Horror Ambiance.mp3" id="3_tet1w"]
+[ext_resource type="AudioStream" uid="uid://v15gx3fr41q2" path="res://bin/sounds/player/horror-sting.mp3" id="4_cv8kb"]
 [ext_resource type="Script" uid="uid://b66ud7stp5ic3" path="res://bin/player/first_person.gd" id="4_p06ge"]
 [ext_resource type="Script" uid="uid://c4elbk0h87oml" path="res://bin/player/controlled.gd" id="5_fg1fx"]
 [ext_resource type="AudioStream" uid="uid://cp7bxbegiutwk" path="res://bin/sounds/player/feets/softshoe_generic1.wav" id="6_hnmk5"]
@@ -17,6 +19,19 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gw43"]
 radius = 0.4
 height = 1.8
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_l15dy"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("2_l15dy")
+metadata/_custom_type_script = "uid://caiylw20pv48w"
+
+[sub_resource type="Compositor" id="Compositor_p5htp"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_l15dy")])
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_om5rw"]
 height = 1.8
@@ -48,6 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4308817, 0)
 [node name="FirstPersonView" type="Camera3D" parent="Head" unique_id=897755249]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
+compositor = SubResource("Compositor_p5htp")
 fov = 37.849285
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/FirstPersonView" unique_id=895380153]
@@ -61,6 +77,16 @@ volume_db = -80.0
 autoplay = true
 attenuation_filter_cutoff_hz = 20500.0
 parameters/looping = true
+
+[node name="Sting" type="AudioStreamPlayer3D" parent="Head/FirstPersonView" unique_id=260195585]
+unique_name_in_owner = true
+stream = ExtResource("4_cv8kb")
+max_db = -5.194
+
+[node name="StingTimer" type="Timer" parent="Head/FirstPersonView" unique_id=1788179165]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
 
 [node name="CameraState" type="Node" parent="Head" unique_id=928013051 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -98,3 +124,4 @@ stream = SubResource("AudioStreamRandomizer_pitpm")
 volume_db = -30.0
 
 [connection signal="interacted_with" from="Head/FirstPersonView/InteractionRay" to="Head/CameraState/FirstPerson" method="_on_interaction_ray_interacted_with"]
+[connection signal="timeout" from="Head/FirstPersonView/StingTimer" to="." method="_on_sting_timer_timeout"]

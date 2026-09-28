@@ -12,6 +12,17 @@ var crouch_height = default_head_height / 2
 @export var SPEED := 5.0
 @export var SPRINT_SPEED := 8.0
 @export var CROUCH_SPEED := 1.5
+@export_category("Enemy")
+@export var enemy : CharacterBody3D
+@export_category("Sting Settings")
+@export var MAX_DISTANCE : float = 15.0
+@export var MIN_DB = -80.0
+@export var MAX_DB = -30.0
+@export var MAX_BLUR = 0.8
+@export var MIN_BLUR = 0.2
+
+func _ready() -> void:
+	SignalBus.enemy_enter_view.connect(_on_manager_in_view)
 
 func _physics_process(delta: float) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -80,3 +91,22 @@ func _on_manger_collided_with_player(marker) -> void:
 	if %CameraState.current_state == %Controlled:
 		revert_first_person()
 	%FirstPerson.start_player_death(marker)
+
+func _on_manager_in_view(enemy_position:Vector3) -> void:
+	var distance_to_enemy = self.global_position.distance_to(enemy_position)
+	var distance_to_db = clampf(remap(distance_to_enemy, 0.0, MAX_DISTANCE, MAX_DB ,MIN_DB), MIN_DB, MAX_DB) 
+	var distance_to_intensity = remap(distance_to_enemy, 0.0, MAX_DISTANCE, MAX_BLUR, MIN_BLUR )
+	if %StingTimer.is_stopped() and distance_to_enemy < MAX_DISTANCE:
+		%Sting.volume_db = distance_to_db
+		%Sting.play()
+		%StingTimer.start()
+		toggle_blur_effect(distance_to_intensity)
+
+func toggle_blur_effect(value:float) -> void:
+	for effect in %FirstPersonView.compositor.compositor_effects:
+		if effect is AccumBlurEffect:
+			effect.alpha = value
+			return
+
+func _on_sting_timer_timeout() -> void:
+	toggle_blur_effect(0.0)
