@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://ckohjku36a1xf"]
+
+[ext_resource type="Texture2D" uid="uid://caxiecaonjfor" path="res://bin/ui/alerts/info_icon.png" id="1_yn6ao"]
+[ext_resource type="Script" uid="uid://brv1vuei4cd75" path="res://bin/player/ui_popup.gd" id="2_vnxfm"]
+[ext_resource type="AudioStream" uid="uid://c4ocykaeovg3j" path="res://bin/sounds/ui/windows-7-ding.mp3" id="3_csgi6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l15dy"]
+content_margin_left = 10.0
+bg_color = Color(1, 1, 1, 0.60784316)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.16078432)
+shadow_size = 7
+shadow_offset = Vector2(0, 2.785)
+
+[sub_resource type="Theme" id="Theme_p5htp"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/icons/icon = ExtResource("1_yn6ao")
+Button/styles/normal = SubResource("StyleBoxFlat_l15dy")
+
+[sub_resource type="Animation" id="Animation_vnxfm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_csgi6"]
+resource_name = "in_and_out"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 1, 0, 0, 0),
+"points": PackedFloat32Array(450, -0.25, 0, 0.25, 0, 0, 0, 0, 0, 0, 0, 0, -87, 0.06666666, 19, 1, 0, 0, 0, 0, 0, -0.25, 0, 0.25, 0, -28, -0.25, 0, 0.25, 0, 450, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.23333333, 0.4, 0.4666667, 4.4, 4.633333, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.23333333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jy6ho"]
+_data = {
+&"RESET": SubResource("Animation_vnxfm"),
+&"in_and_out": SubResource("Animation_csgi6")
+}
+
+[node name="Button" type="Button" unique_id=988056505]
+offset_left = 739.0
+offset_top = 502.0
+offset_right = 1143.0
+offset_bottom = 527.0
+offset_transform_enabled = true
+mouse_filter = 2
+theme = SubResource("Theme_p5htp")
+icon = ExtResource("1_yn6ao")
+alignment = 0
+expand_icon = true
+script = ExtResource("2_vnxfm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=638406132]
+libraries/ = SubResource("AnimationLibrary_jy6ho")
+autoplay = &"in_and_out"
+
+[node name="AliveTime" type="Timer" parent="." unique_id=1987513763]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1736231379]
+stream = ExtResource("3_csgi6")
+autoplay = true
+
+[connection signal="timeout" from="AliveTime" to="." method="_on_alive_time_timeout"]

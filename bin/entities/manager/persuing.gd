@@ -3,7 +3,7 @@ extends State
 var current_target_location : Vector3
 
 func enter():
-	pass
+	SignalBus.ui_popup.emit("Run.")
 
 func physics_update(_delta: float):
 	get_tree().call_group("enemy", "update_target_location", current_target_location)

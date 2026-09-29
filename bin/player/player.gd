@@ -54,16 +54,13 @@ func _crouch(_delta):
 
 func _sprint(delta) -> void:
 	stamina = clamp(stamina, 0.0, 10.0)
-	if Input.is_action_pressed("sprint") and stamina > 0.0:
-		stamina -= delta*2
+	if Input.is_action_pressed("sprint"):
 		SPEED = SPRINT_SPEED
 		var tween = create_tween()
 		tween.tween_property(%FirstPersonView, "fov",sprint_fov, 0.2)
 	else:
 		Input.action_release("sprint")
 		SPEED = 3.0
-		await get_tree().create_timer(0.0).timeout
-		stamina += delta*2
 		var tween = create_tween()
 		tween.tween_property(%FirstPersonView, "fov",default_fov, 0.2)
 
@@ -71,12 +68,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	#Capture mouse events if clicked, exit with esc
 	#if event is InputEventMouseButton:
 		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#elif event.is_action_pressed("ui_cancel"):
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event.is_action_pressed("ui_cancel"):
+		SignalBus.ui_popup.emit("There is no escape.")
 	#Read mouseinput and multiply by look sensitivity to move camera
 	#Left / right rotates body left and right
 	#up / down rotates camera
-	
+	if event.is_action_pressed("test"):
+		GameState.completed_tasks = GameState.useable_monitors
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotate_y(-event.relative.x * look_sensitivity)

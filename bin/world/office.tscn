@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dat5t6sjjc0fs" path="res://bin/world/objects/drywall/drywall_medium.tscn" id="12_156fb"]
 [ext_resource type="PackedScene" uid="uid://d1ak8oubj7qea" path="res://bin/world/objects/glass/wall/glass_wall_medium.tscn" id="14_156fb"]
 [ext_resource type="PackedScene" uid="uid://bdd4v4xtw20xl" path="res://bin/world/objects/glass/wall/glass_wall_large.tscn" id="15_1spsv"]
+[ext_resource type="PackedScene" uid="uid://dgfe1o7jash1t" path="res://bin/entities/interactables/leave_door.tscn" id="15_ye407"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1spsv"]
 panorama = ExtResource("2_743nn")
@@ -84,7 +85,7 @@ script = ExtResource("1_vlusl")
 environment = SubResource("Environment_1spsv")
 
 [node name="Player" parent="." unique_id=1936977173 node_paths=PackedStringArray("enemy") instance=ExtResource("2_dt7po")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.272568, 0.060564518, 17.930124)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.424336, 0.06056547, 18.624321)
 enemy = NodePath("../Manger")
 MAX_DISTANCE = 10.0
 MAX_BLUR = 0.9
@@ -1202,6 +1203,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.352088, 0, 15.482701)
 
 [node name="GlassWallMedium5" parent="NavigationRegion3D/Walls" unique_id=274601322 instance=ExtResource("14_156fb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.832993, 0, 15.482701)
+
+[node name="LeaveDoor" parent="NavigationRegion3D/Walls" unique_id=259078817 instance=ExtResource("15_ye407")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.682475, 0, 27.717653)
 
 [node name="Desks" type="Node3D" parent="NavigationRegion3D" unique_id=2071692995]
 unique_name_in_owner = true

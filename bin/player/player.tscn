@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b66ud7stp5ic3" path="res://bin/player/first_person.gd" id="4_p06ge"]
 [ext_resource type="Script" uid="uid://c4elbk0h87oml" path="res://bin/player/controlled.gd" id="5_fg1fx"]
 [ext_resource type="AudioStream" uid="uid://cp7bxbegiutwk" path="res://bin/sounds/player/feets/softshoe_generic1.wav" id="6_hnmk5"]
+[ext_resource type="Script" uid="uid://co6fbupq7a8ew" path="res://bin/player/v_box_container.gd" id="6_l15dy"]
 [ext_resource type="AudioStream" uid="uid://cgbj0d14qhqrq" path="res://bin/sounds/player/feets/softshoe_generic2.wav" id="7_tet1w"]
 [ext_resource type="AudioStream" uid="uid://ba1ds5hdygiu5" path="res://bin/sounds/player/feets/softshoe_generic4.wav" id="8_cv8kb"]
 [ext_resource type="AudioStream" uid="uid://3tvj1kba5uar" path="res://bin/sounds/player/feets/softshoe_generic5.wav" id="9_p5htp"]
@@ -87,6 +88,16 @@ max_db = -5.194
 unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Head/FirstPersonView" unique_id=1181531334]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Head/FirstPersonView/CanvasLayer" unique_id=1786944908]
+offset_left = 802.0
+offset_top = 226.0
+offset_right = 1149.0
+offset_bottom = 517.0
+alignment = 2
+script = ExtResource("6_l15dy")
 
 [node name="CameraState" type="Node" parent="Head" unique_id=928013051 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
