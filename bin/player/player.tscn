@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://caiylw20pv48w" path="res://bin/shaders/accum_blur_effect.gd" id="2_l15dy"]
 [ext_resource type="Script" uid="uid://dxbadn6yq672b" path="res://bin/player/interaction_ray.gd" id="2_wkpl8"]
 [ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_qiuia"]
-[ext_resource type="AudioStream" uid="uid://d0qcev4vd6qd2" path="res://bin/world/sounds/ambience/Horror Ambiance.mp3" id="3_tet1w"]
-[ext_resource type="AudioStream" uid="uid://v15gx3fr41q2" path="res://bin/sounds/player/horror-sting.mp3" id="4_cv8kb"]
+[ext_resource type="AudioStream" uid="uid://b8qeq1radh8m6" path="res://bin/world/sounds/ambience/horror_score_1.mp3" id="4_l15dy"]
 [ext_resource type="Script" uid="uid://b66ud7stp5ic3" path="res://bin/player/first_person.gd" id="4_p06ge"]
 [ext_resource type="Script" uid="uid://c4elbk0h87oml" path="res://bin/player/controlled.gd" id="5_fg1fx"]
+[ext_resource type="AudioStream" uid="uid://bl0fs5kh22b28" path="res://bin/sounds/player/horror-stinger.mp3" id="5_l15dy"]
 [ext_resource type="AudioStream" uid="uid://cp7bxbegiutwk" path="res://bin/sounds/player/feets/softshoe_generic1.wav" id="6_hnmk5"]
 [ext_resource type="Script" uid="uid://co6fbupq7a8ew" path="res://bin/player/v_box_container.gd" id="6_l15dy"]
 [ext_resource type="AudioStream" uid="uid://cgbj0d14qhqrq" path="res://bin/sounds/player/feets/softshoe_generic2.wav" id="7_tet1w"]
@@ -73,15 +73,15 @@ script = ExtResource("2_wkpl8")
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="Head/FirstPersonView" unique_id=356273029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01667583, 0)
-stream = ExtResource("3_tet1w")
-volume_db = -80.0
+stream = ExtResource("4_l15dy")
+volume_db = -60.0
 autoplay = true
 attenuation_filter_cutoff_hz = 20500.0
 parameters/looping = true
 
 [node name="Sting" type="AudioStreamPlayer3D" parent="Head/FirstPersonView" unique_id=260195585]
 unique_name_in_owner = true
-stream = ExtResource("4_cv8kb")
+stream = ExtResource("5_l15dy")
 max_db = -5.194
 
 [node name="StingTimer" type="Timer" parent="Head/FirstPersonView" unique_id=1788179165]
@@ -109,8 +109,9 @@ metadata/_custom_type_script = "uid://81rtjubj5bf0"
 unique_name_in_owner = true
 script = ExtResource("4_p06ge")
 player = NodePath("../../..")
-amplitude = 0.005
-freq = 2.0
+hb_amplitude = 0.005
+hb_freq = 3.0
+ss_random_strength = 0.2
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="Controlled" type="Node" parent="Head/CameraState" unique_id=1365695022]

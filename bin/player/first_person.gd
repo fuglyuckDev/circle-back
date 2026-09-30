@@ -4,16 +4,35 @@ var returned_camera_pos := false
 
 @export var player : CharacterBody3D
 
-@export_category("Head bob strength")
-@export var amplitude := 1.0
-@export var freq := 1.0
-var time : float
+@export_category("Camera Movement")
+@export_group("Head Bob")
+@export var hb_amplitude := 1.0
+@export var hb_freq := 1.0
+@export_group("Screenshake")
+## How far the screen shakes, higher = further
+@export var ss_random_strength := 30.0
+@export var shake_fade := 5.0
+
+var rng = RandomNumberGenerator.new()
+var shake_strength := 0.0
+
+var hb_time : float
+var ss_time : float
+var ss_playing = false
 var can_play_foosteps := true
 
+var start_head_position = null
+
+func enter():
+	start_head_position = %FirstPersonView.position
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	%Feets.play()
+	SignalBus.jumpscare_screenshake.connect(_on_start_jumpscare)
+	
 func _head_bob(delta: float) -> void:
-	time += delta
+	hb_time += delta
 	if player.velocity.length() > 0.0 and player.is_on_floor():
-		var sine = sin(time * (freq * player.velocity.length()) ) * amplitude
+		var sine = sin(hb_time * (hb_freq * player.velocity.length()) ) * hb_amplitude
 		%FirstPersonView.position.y = %FirstPersonView.position.y + sine
 		play_footstep(clampf(remap(sine, -0.003, 0.004, 0.0, 1.0),0.0,1.0))
 	elif player.is_on_floor():
@@ -28,9 +47,14 @@ func play_footstep(headbob_value):
 	else:
 		can_play_foosteps = true
 
-func enter():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	%Feets.play()
+func apply_shake():
+	shake_strength = ss_random_strength
+
+func _on_start_jumpscare():
+	apply_shake()
+
+func random_offset() -> Vector2:
+	return Vector2(rng.randf_range(-shake_strength, shake_strength),rng.randf_range(-shake_strength, shake_strength),)
 
 func _on_interaction_ray_interacted_with(parent_object: Variant) -> void:
 	_move_camera(parent_object)
@@ -64,6 +88,11 @@ func physics_update(delta: float):
 	else:
 		returned_camera_pos = true
 	_head_bob(delta)
+	if shake_strength > 0:
+		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
+		%FirstPersonView.v_offset = random_offset().y
+		%FirstPersonView.h_offset = random_offset().x
+
 
 func exit():
 	returned_camera_pos = false

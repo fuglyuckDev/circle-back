@@ -6,7 +6,7 @@
 size = Vector3(20, 3, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
-size = Vector3(20, 3, 0.2)
+size = Vector3(20.058594, 3, 0.2)
 
 [node name="DrywallLarge" type="Node3D" unique_id=1084231085]
 

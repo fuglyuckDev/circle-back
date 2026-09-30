@@ -13,8 +13,10 @@ config_version=5
 config/name="circle-back"
 run/main_scene="uid://xpohdrm8d4iy"
 config/features=PackedStringArray("4.7", "Forward Plus")
-boot_splash/show_image=false
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://d11uso3vi0m8b"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=50
 
 [autoload]
 
@@ -92,3 +94,4 @@ lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
 scaling_3d/mode=5
 scaling_3d/scale=0.5
+occlusion_culling/use_occlusion_culling=true

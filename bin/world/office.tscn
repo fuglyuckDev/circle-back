@@ -87,9 +87,6 @@ environment = SubResource("Environment_1spsv")
 [node name="Player" parent="." unique_id=1936977173 node_paths=PackedStringArray("enemy") instance=ExtResource("2_dt7po")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.424336, 0.06056547, 18.624321)
 enemy = NodePath("../Manger")
-MAX_DISTANCE = 10.0
-MAX_BLUR = 0.9
-MIN_BLUR = 0.5
 
 [node name="Manger" parent="." unique_id=1770923447 node_paths=PackedStringArray("player") instance=ExtResource("4_ouqls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.699916, 0, 25.658298)
