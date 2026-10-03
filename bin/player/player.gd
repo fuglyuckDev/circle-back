@@ -3,6 +3,8 @@ extends CharacterBody3D
 var stamina : float
 var default_head_height = 1.431
 var crouch_height = default_head_height / 2
+var is_hiding := false
+var is_persued := false
 
 @export_category("Camera Settings")
 @export var look_sensitivity : float = 0.006
@@ -24,6 +26,8 @@ var crouch_height = default_head_height / 2
 func _ready() -> void:
 	SignalBus.enemy_enter_view.connect(_on_manager_in_view)
 	SignalBus.persuit.connect(_on_manager_persuit)
+	SignalBus.exit_persuit.connect(_on_manager_exit_persuit)
+	SignalBus.is_hiding.connect(_on_is_hiding)
 
 func _physics_process(delta: float) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -53,7 +57,7 @@ func _crouch(_delta):
 	else:
 		tween.tween_property(%Head, "position:y", default_head_height, 0.2)
 
-func _sprint(delta) -> void:
+func _sprint(_delta) -> void:
 	stamina = clamp(stamina, 0.0, 10.0)
 	if Input.is_action_pressed("sprint"):
 		SPEED = SPRINT_SPEED
@@ -76,6 +80,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	#up / down rotates camera
 	if event.is_action_pressed("test"):
 		SignalBus.jumpscare_screenshake.emit()
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		if event.is_action_pressed("interact"):
+			if is_hiding:
+				revert_first_person()
+				revert_hiding()
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotate_y(-event.relative.x * look_sensitivity)
@@ -86,18 +95,36 @@ func _unhandled_input(event: InputEvent) -> void:
 func revert_first_person() -> void:
 	%CameraState.change_state("FirstPerson")
 
+func revert_hiding() -> void:
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
+	is_hiding = false
+
+func toggle_blur_effect(value:float) -> void:
+	for effect in %FirstPersonView.compositor.compositor_effects:
+		if effect is AccumBlurEffect:
+			effect.alpha = value
+			return
+
+func _on_sting_timer_timeout() -> void:
+	toggle_blur_effect(0.0)
+
 func _on_manger_collided_with_player(marker) -> void:
 	if %CameraState.current_state == %Controlled:
 		revert_first_person()
 	%FirstPerson.start_player_death(marker)
 
 func _on_manager_persuit() -> void:
+	is_persued = true
 	if !%Sting.playing and %StingTimer.is_stopped():
 		%Sting.stream = preload("res://bin/sounds/player/horror-sting.mp3")
 		%Sting.play()
 		%StingTimer.start()
 		toggle_blur_effect(MAX_BLUR)
 		SignalBus.jumpscare_screenshake.emit()
+
+func _on_manager_exit_persuit() -> void:
+	is_persued = false
 
 func _on_manager_in_view(enemy_position:Vector3) -> void:
 	var distance_to_enemy = self.global_position.distance_to(enemy_position)
@@ -111,12 +138,8 @@ func _on_manager_in_view(enemy_position:Vector3) -> void:
 		toggle_blur_effect(distance_to_intensity)
 		SignalBus.jumpscare_screenshake.emit()
 
-func toggle_blur_effect(value:float) -> void:
-	for effect in %FirstPersonView.compositor.compositor_effects:
-		if effect is AccumBlurEffect:
-			print(value)
-			effect.alpha = value
-			return
-
-func _on_sting_timer_timeout() -> void:
-	toggle_blur_effect(0.0)
+func _on_is_hiding(value) -> void:
+	is_hiding = value
+	if !is_persued:
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)

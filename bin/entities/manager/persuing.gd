@@ -17,3 +17,4 @@ func _on_navigation_agent_3d_target_reached() -> void:
 
 func exit():
 	current_target_location = Vector3.ZERO
+	SignalBus.exit_persuit.emit()

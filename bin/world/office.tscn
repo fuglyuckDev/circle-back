@@ -86,6 +86,8 @@ environment = SubResource("Environment_1spsv")
 
 [node name="Player" parent="." unique_id=1936977173 node_paths=PackedStringArray("enemy") instance=ExtResource("2_dt7po")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.424336, 0.06056547, 18.624321)
+collision_layer = 3
+collision_mask = 3
 enemy = NodePath("../Manger")
 
 [node name="Manger" parent="." unique_id=1770923447 node_paths=PackedStringArray("player") instance=ExtResource("4_ouqls")]
@@ -98,6 +100,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8232527, -0.014691472, -0.
 navigation_mesh = SubResource("NavigationMesh_ouqls")
 
 [node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=337826647]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=1688711164]
 shape = SubResource("WorldBoundaryShape3D_ouqls")

@@ -23,12 +23,22 @@ var can_play_foosteps := true
 
 var start_head_position = null
 
+var persuit := false
+
 func enter():
 	start_head_position = %FirstPersonView.position
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	%Feets.play()
 	SignalBus.jumpscare_screenshake.connect(_on_start_jumpscare)
-	
+	SignalBus.persuit.connect(_on_enter_persuit)
+	SignalBus.exit_persuit.connect(_on_exit_persuit)
+
+func _on_enter_persuit() -> void:
+	persuit = true
+
+func _on_exit_persuit() -> void:
+	persuit = false
+
 func _head_bob(delta: float) -> void:
 	hb_time += delta
 	if player.velocity.length() > 0.0 and player.is_on_floor():
@@ -57,7 +67,10 @@ func random_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength),rng.randf_range(-shake_strength, shake_strength),)
 
 func _on_interaction_ray_interacted_with(parent_object: Variant) -> void:
-	_move_camera(parent_object)
+	if not persuit:
+		_move_camera(parent_object)
+	else:
+		SignalBus.ui_popup.emit("Now is not the time.")
 
 func _get_children_of_type(type, object):
 	for child in object.get_children():
