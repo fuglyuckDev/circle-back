@@ -14,10 +14,14 @@ var look_at_target : bool
 var is_player_in_range : bool
 var player_last_known_pos : Vector3
 var current_position : Vector3
+var speed_modifier : float = 0.0
 
 signal player_position(player_pos:Vector3)
 signal search_position(search_pos:Vector3)
 signal collided_with_player(manager)
+
+func _ready() -> void:
+	SignalBus.manager_stage.connect(_on_manager_stage_change)
 
 func _physics_process(delta: float) -> void:
 	if %ManagerStates.current_state == %Persuing or %ManagerStates.current_state == %Searching:
@@ -30,10 +34,9 @@ func _physics_process(delta: float) -> void:
 	var current_location = global_transform.origin # Enemy's current location
 	current_position = current_location
 	var next_location = nav_agent.get_next_path_position() # Calls the nav agent looking for the next path position, in this case, the function below (update_target_location) runs every physics tick to send the player's position to the nav agent
-	var new_velocity = (next_location - current_location).normalized() * SPEED # next_location - current_location to get direction of player, normalized keeps the length to 1. * SPEED for the speed of the bastard.
+	var new_velocity = (next_location - current_location).normalized() * (SPEED + speed_modifier) # next_location - current_location to get direction of player, normalized keeps the length to 1. * SPEED for the speed of the bastard.
 	
 	velocity = velocity.move_toward(new_velocity, 0.25) # Honestly not sure what the .25 is. Docs don't help either lol
-	var current_velocity = velocity.length()
 	var move_dir := Vector3(velocity.x, 0, velocity.z)
 	if look_at_target:
 		if move_dir.length_squared() > 0.01:
@@ -60,8 +63,11 @@ func _over_persue():
 				player_position.emit(player.transform.origin)
 				player_last_known_pos = player.transform.origin
 			else:
-				%ManagerStates.change_state("Searching")
-				search_position.emit(player_last_known_pos)
+				_search_area()
+
+func _search_area():
+	%ManagerStates.change_state("Searching")
+	search_position.emit(player.transform.origin)
 
 func _can_manager_see_player(player_in_range):
 	if player_in_range:
@@ -111,3 +117,8 @@ func _on_light_flicker_body_entered(body: Node3D) -> void:
 
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
 	SignalBus.enemy_enter_view.emit(self.global_position)
+
+func _on_manager_stage_change(value:int):
+	speed_modifier = value * 0.5
+	if value >= 1.0:
+		_search_area()

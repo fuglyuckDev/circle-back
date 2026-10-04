@@ -84,6 +84,7 @@ parameters/looping = true
 unique_name_in_owner = true
 stream = ExtResource("5_l15dy")
 max_db = -5.194
+max_polyphony = 2
 
 [node name="StingTimer" type="Timer" parent="Head/FirstPersonView" unique_id=1788179165]
 unique_name_in_owner = true

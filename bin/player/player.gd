@@ -28,6 +28,7 @@ func _ready() -> void:
 	SignalBus.persuit.connect(_on_manager_persuit)
 	SignalBus.exit_persuit.connect(_on_manager_exit_persuit)
 	SignalBus.is_hiding.connect(_on_is_hiding)
+	SignalBus.manager_stage.connect(_on_manager_stage_change)
 
 func _physics_process(delta: float) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -143,3 +144,12 @@ func _on_is_hiding(value) -> void:
 	if !is_persued:
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
+
+func _on_manager_stage_change(stage:float) -> void:
+	print(stage)
+	if stage >= 1.0:
+		%Sting.stream = preload("res://bin/sounds/player/manager_scream.mp3")
+		%Sting.play()
+		%StingTimer.start()
+		toggle_blur_effect(MAX_BLUR)
+		SignalBus.jumpscare_screenshake.emit()

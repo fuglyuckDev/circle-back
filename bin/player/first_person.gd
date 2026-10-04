@@ -67,10 +67,7 @@ func random_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength),rng.randf_range(-shake_strength, shake_strength),)
 
 func _on_interaction_ray_interacted_with(parent_object: Variant) -> void:
-	if not persuit:
-		_move_camera(parent_object)
-	else:
-		SignalBus.ui_popup.emit("Now is not the time.")
+	_move_camera(parent_object)
 
 func _get_children_of_type(type, object):
 	for child in object.get_children():

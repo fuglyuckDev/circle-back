@@ -8,8 +8,4 @@ func select():
 			monitor.generate_useable_monitor()
 
 func interact():
-	# emit a signal that you're hiding.
-	# if hiding is true, player collision is turned off and cannot be spotted.
-	# A check -> while visible, cannot hide, can only hide if manager cannot see you?
-	print("Started hiding in desk!")
 	SignalBus.is_hiding.emit(true)

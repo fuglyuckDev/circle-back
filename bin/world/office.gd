@@ -10,6 +10,7 @@ func _ready() -> void:
 		var selected_desk_for_group = _get_random_desk(desks)
 		selected_desk_for_group.select()
 	SignalBus.ui_popup.emit("Press 'E' to push code.")
+	SignalBus.game_started.emit()
 
 func _get_random_desk(array: Array) -> Node3D:
 	var array_size = array.size()

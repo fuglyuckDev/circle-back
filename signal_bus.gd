@@ -8,3 +8,5 @@ signal jumpscare_screenshake
 signal persuit
 signal exit_persuit
 signal is_hiding(value:bool)
+signal manager_stage(value:int)
+signal game_started
