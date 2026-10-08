@@ -27,11 +27,12 @@ var persuit := false
 
 func enter():
 	start_head_position = %FirstPersonView.position
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	%Feets.play()
 	SignalBus.jumpscare_screenshake.connect(_on_start_jumpscare)
 	SignalBus.persuit.connect(_on_enter_persuit)
 	SignalBus.exit_persuit.connect(_on_exit_persuit)
+	print("First Person Input")
 
 func _on_enter_persuit() -> void:
 	persuit = true
@@ -77,8 +78,9 @@ func _get_children_of_type(type, object):
 			_get_children_of_type(type, child)
 
 func _move_camera(parent_object: Variant):
-	if _get_children_of_type(Marker3D, parent_object):
-		var camera_target = _get_children_of_type(Marker3D, parent_object)
+	var child_camera_target = _get_children_of_type(Marker3D, parent_object)
+	if child_camera_target:
+		var camera_target = child_camera_target
 		_start_camera_move(camera_target)
 
 func _start_camera_move(camera_target):

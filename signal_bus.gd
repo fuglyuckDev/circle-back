@@ -10,3 +10,4 @@ signal exit_persuit
 signal is_hiding(value:bool)
 signal manager_stage(value:int)
 signal game_started
+signal can_interact(value:bool)

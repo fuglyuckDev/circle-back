@@ -5,9 +5,11 @@ var default_head_height = 1.431
 var crouch_height = default_head_height / 2
 var is_hiding := false
 var is_persued := false
+var can_interact := true
 
 @export_category("Camera Settings")
 @export var look_sensitivity : float = 0.006
+@export var joypad_sensitivity : float = 0.03
 @export var default_fov : float = 75
 @export var sprint_fov : float = 90
 @export_category("Movement Settings")
@@ -29,6 +31,15 @@ func _ready() -> void:
 	SignalBus.exit_persuit.connect(_on_manager_exit_persuit)
 	SignalBus.is_hiding.connect(_on_is_hiding)
 	SignalBus.manager_stage.connect(_on_manager_stage_change)
+	SignalBus.can_interact.connect(_on_can_interact)
+
+func _process(_delta) -> void:
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		var h_look:float = Input.get_axis("l_right", "l_left")
+		rotate_y(h_look * joypad_sensitivity)
+		var v_look:float = Input.get_axis("l_down", "l_up")
+		%Head.rotate_x(v_look * look_sensitivity)
+		%Head.rotation.x = clamp(%Head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -89,8 +100,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotate_y(-event.relative.x * look_sensitivity)
-			%FirstPersonView.rotate_x(-event.relative.y * look_sensitivity)
-			%FirstPersonView.rotation.x = clamp(%FirstPersonView.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+			%Head.rotate_x(-event.relative.y * look_sensitivity)
+			%Head.rotation.x = clamp(%Head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	pass
 
 func revert_first_person() -> void:
@@ -148,8 +159,12 @@ func _on_is_hiding(value) -> void:
 func _on_manager_stage_change(stage:float) -> void:
 	print(stage)
 	if stage >= 1.0:
+		Input.start_joy_vibration(0.0,0.5,0.5,5.0)
 		%Sting.stream = preload("res://bin/sounds/player/manager_scream.mp3")
 		%Sting.play()
 		%StingTimer.start()
 		toggle_blur_effect(MAX_BLUR)
 		SignalBus.jumpscare_screenshake.emit()
+
+func _on_can_interact(value:bool) -> void:
+	can_interact = value

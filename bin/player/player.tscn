@@ -68,9 +68,10 @@ physics_interpolation_mode = 1
 compositor = SubResource("Compositor_p5htp")
 fov = 37.849285
 
-[node name="InteractionRay" type="RayCast3D" parent="Head/FirstPersonView" unique_id=895380153]
+[node name="InteractionRay" type="RayCast3D" parent="Head/FirstPersonView" unique_id=895380153 node_paths=PackedStringArray("player")]
 target_position = Vector3(0, 0, -2)
 script = ExtResource("2_wkpl8")
+player = NodePath("../../..")
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="Head/FirstPersonView" unique_id=356273029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01667583, 0)
