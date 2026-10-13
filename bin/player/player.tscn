@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnbuxacpfltc4"]
 
 [ext_resource type="Script" uid="uid://wootbv5vgsb3" path="res://bin/player/player.gd" id="1_om5rw"]
-[ext_resource type="Script" uid="uid://caiylw20pv48w" path="res://bin/shaders/accum_blur_effect.gd" id="2_l15dy"]
+[ext_resource type="Compositor" uid="uid://ch437rox6tqq5" path="res://style.tres" id="2_l15dy"]
 [ext_resource type="Script" uid="uid://dxbadn6yq672b" path="res://bin/player/interaction_ray.gd" id="2_wkpl8"]
 [ext_resource type="Script" uid="uid://81rtjubj5bf0" path="res://bin/scripts/StateMachine/StateMachine.gd" id="3_qiuia"]
 [ext_resource type="AudioStream" uid="uid://b8qeq1radh8m6" path="res://bin/world/sounds/ambience/horror_score_1.mp3" id="4_l15dy"]
@@ -20,19 +20,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gw43"]
 radius = 0.4
 height = 1.8
-
-[sub_resource type="CompositorEffect" id="CompositorEffect_l15dy"]
-resource_local_to_scene = false
-resource_name = ""
-enabled = true
-effect_callback_type = 4
-needs_motion_vectors = false
-needs_normal_roughness = false
-script = ExtResource("2_l15dy")
-metadata/_custom_type_script = "uid://caiylw20pv48w"
-
-[sub_resource type="Compositor" id="Compositor_p5htp"]
-compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_l15dy")])
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_om5rw"]
 height = 1.8
@@ -65,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4308817, 0)
 [node name="FirstPersonView" type="Camera3D" parent="Head" unique_id=897755249]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
-compositor = SubResource("Compositor_p5htp")
+compositor = ExtResource("2_l15dy")
 fov = 37.849285
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/FirstPersonView" unique_id=895380153 node_paths=PackedStringArray("player")]
@@ -121,6 +108,9 @@ metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 unique_name_in_owner = true
 script = ExtResource("5_fg1fx")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Head" unique_id=671391713]
+light_energy = 0.078
 
 [node name="WorldModel" type="Node3D" parent="." unique_id=1066729859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9078435, 0)

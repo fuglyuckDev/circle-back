@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bxt15rna0of48"
+path="res://.godot/imported/color_selective.glsl-f0f2c3b47a8e457e7d40a9324ff7edad.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/color_selective.glsl"
+dest_files=["res://.godot/imported/color_selective.glsl-f0f2c3b47a8e457e7d40a9324ff7edad.res"]
+
+[params]
+

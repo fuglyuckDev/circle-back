@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dyhe80nuybms6"
+path="res://.godot/imported/dither_bayer.glsl-eb13312966f16512ff8e8686da5ca6a5.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/dither_bayer.glsl"
+dest_files=["res://.godot/imported/dither_bayer.glsl-eb13312966f16512ff8e8686da5ca6a5.res"]
+
+[params]
+

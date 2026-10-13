@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cw67n0hle1xgr"
+path="res://.godot/imported/vhs_chroma_bleed.glsl-b41522fb894a1e4cdaf3c71ce91f32ac.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/vhs_chroma_bleed.glsl"
+dest_files=["res://.godot/imported/vhs_chroma_bleed.glsl-b41522fb894a1e4cdaf3c71ce91f32ac.res"]
+
+[params]
+

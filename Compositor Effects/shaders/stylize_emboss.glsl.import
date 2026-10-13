@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://di0vqe0sq2osl"
+path="res://.godot/imported/stylize_emboss.glsl-8dc80730a2128f32d83817156be0cd4c.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/stylize_emboss.glsl"
+dest_files=["res://.godot/imported/stylize_emboss.glsl-8dc80730a2128f32d83817156be0cd4c.res"]
+
+[params]
+

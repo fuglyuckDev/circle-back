@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bl4cdcgkj44r7"
+path="res://.godot/imported/color_levels.glsl-b5c646976d7b775afba4765ce3d1ea67.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/color_levels.glsl"
+dest_files=["res://.godot/imported/color_levels.glsl-b5c646976d7b775afba4765ce3d1ea67.res"]
+
+[params]
+

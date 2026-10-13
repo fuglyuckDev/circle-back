@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://r22tqcuxtfed"
+path="res://.godot/imported/flicker.glsl-4ee57786a836ffe982936bb4892db08a.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/flicker.glsl"
+dest_files=["res://.godot/imported/flicker.glsl-4ee57786a836ffe982936bb4892db08a.res"]
+
+[params]
+

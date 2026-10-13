@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://cuwe87yr38ptb"]
 
-[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_mywma"]
+[ext_resource type="Texture2D" uid="uid://ddxwes4yvrx0q" path="res://bin/world/textures/prototype/keyboard_test.png" id="1_mywma"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pitpm"]
+albedo_color = Color(0.37413925, 0.37413928, 0.37413922, 1)
 albedo_texture = ExtResource("1_mywma")
+uv1_scale = Vector3(1.985, 2.985, 4.54)
+uv1_offset = Vector3(1.5, -0.075, -0.495)
 uv1_triplanar = true
 
 [node name="Keyboard" type="Node3D" unique_id=353101335]

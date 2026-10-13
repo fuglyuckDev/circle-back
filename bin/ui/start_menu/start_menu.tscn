@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0snmdpat4t0k" path="res://bin/world/objects/desk/desk.tscn" id="5_mfr3q"]
 [ext_resource type="PackedScene" uid="uid://dat5t6sjjc0fs" path="res://bin/world/objects/drywall/drywall_medium.tscn" id="6_eh8tq"]
 [ext_resource type="PackedScene" uid="uid://davxv5xci2hkw" path="res://bin/ui/start_menu/start_menu_ui.tscn" id="7_oglsk"]
+[ext_resource type="Compositor" uid="uid://ch437rox6tqq5" path="res://style.tres" id="8_mfr3q"]
 
 [sub_resource type="Environment" id="Environment_yjexq"]
 background_mode = 2
@@ -189,6 +190,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1348186, 0.44276094, -8.934
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1277029982]
 transform = Transform3D(0.5776407, 0, 0.81629115, 0, 1, 0, -0.81629115, 0, 0.5776407, 8.046732, 1.5909455, 8.388222)
+compositor = ExtResource("8_mfr3q")
 current = true
 
 [node name="StartMenuUi" parent="." unique_id=1311842879 instance=ExtResource("7_oglsk")]

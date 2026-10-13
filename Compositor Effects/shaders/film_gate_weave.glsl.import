@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://deg51hg7uuo5e"
+path="res://.godot/imported/film_gate_weave.glsl-ee2e75e0e56730bfbe6b2a08ac0ee6c5.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/film_gate_weave.glsl"
+dest_files=["res://.godot/imported/film_gate_weave.glsl-ee2e75e0e56730bfbe6b2a08ac0ee6c5.res"]
+
+[params]
+

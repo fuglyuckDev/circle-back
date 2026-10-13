@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bbwy75ubwtv1o"
+path="res://.godot/imported/letterbox.glsl-46c4a497e7fbde1a015b7f05309dc518.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/letterbox.glsl"
+dest_files=["res://.godot/imported/letterbox.glsl-46c4a497e7fbde1a015b7f05309dc518.res"]
+
+[params]
+

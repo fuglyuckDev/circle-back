@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dbr0iy5fpk4i"
+path="res://.godot/imported/stylize_cavity.glsl-bf0c2337eaab102877f48e7455a099b5.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/stylize_cavity.glsl"
+dest_files=["res://.godot/imported/stylize_cavity.glsl-bf0c2337eaab102877f48e7455a099b5.res"]
+
+[params]
+

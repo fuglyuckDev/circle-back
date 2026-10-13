@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://lgifiph8u3y7"
+path="res://.godot/imported/bloom_anamorphic.glsl-1198b61ee0801ceba00b26edec1a40aa.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/bloom_anamorphic.glsl"
+dest_files=["res://.godot/imported/bloom_anamorphic.glsl-1198b61ee0801ceba00b26edec1a40aa.res"]
+
+[params]
+

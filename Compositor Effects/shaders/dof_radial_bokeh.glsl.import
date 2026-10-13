@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://kr0qefrt7au5"
+path="res://.godot/imported/dof_radial_bokeh.glsl-bd6e7848db6f23bdbef780b71c3798bf.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/dof_radial_bokeh.glsl"
+dest_files=["res://.godot/imported/dof_radial_bokeh.glsl-bd6e7848db6f23bdbef780b71c3798bf.res"]
+
+[params]
+

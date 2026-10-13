@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://wbdeeai3g6e3"
+path="res://.godot/imported/anamorphic_streak.glsl-a46b71c36a515f7a1bbe80780bc02673.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/anamorphic_streak.glsl"
+dest_files=["res://.godot/imported/anamorphic_streak.glsl-a46b71c36a515f7a1bbe80780bc02673.res"]
+
+[params]
+

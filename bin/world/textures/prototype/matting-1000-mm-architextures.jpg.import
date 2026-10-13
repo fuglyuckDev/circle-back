@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b50ksufnwhapn"
 path.s3tc="res://.godot/imported/matting-1000-mm-architextures.jpg-b3ecbe8da70744224da7adb24b609186.s3tc.ctex"
+path.etc2="res://.godot/imported/matting-1000-mm-architextures.jpg-b3ecbe8da70744224da7adb24b609186.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://bin/world/textures/prototype/matting-1000-mm-architextures.jpg"
-dest_files=["res://.godot/imported/matting-1000-mm-architextures.jpg-b3ecbe8da70744224da7adb24b609186.s3tc.ctex"]
+dest_files=["res://.godot/imported/matting-1000-mm-architextures.jpg-b3ecbe8da70744224da7adb24b609186.s3tc.ctex", "res://.godot/imported/matting-1000-mm-architextures.jpg-b3ecbe8da70744224da7adb24b609186.etc2.ctex"]
 
 [params]
 

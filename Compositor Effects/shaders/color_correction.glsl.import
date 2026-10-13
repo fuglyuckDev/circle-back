@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cujadjw8s4tym"
+path="res://.godot/imported/color_correction.glsl-4191f5d1fe76c6712dc7107460782e4a.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/color_correction.glsl"
+dest_files=["res://.godot/imported/color_correction.glsl-4191f5d1fe76c6712dc7107460782e4a.res"]
+
+[params]
+

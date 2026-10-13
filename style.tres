@@ -1,0 +1,59 @@
+[gd_resource type="Compositor" format=3 uid="uid://ch437rox6tqq5"]
+
+[ext_resource type="Script" uid="uid://caiylw20pv48w" path="res://bin/shaders/accum_blur_effect.gd" id="1_lt7hn"]
+[ext_resource type="Script" uid="uid://cs4psgpwv654e" path="res://Compositor Effects/scripts/dither_ps1_compositor.gd" id="2_74nf7"]
+[ext_resource type="Script" uid="uid://bv63yhcb5i8t6" path="res://Compositor Effects/scripts/vhs_chroma_bleed_compositor.gd" id="3_rkoon"]
+[ext_resource type="Script" uid="uid://dq53jkhfrwt8y" path="res://Compositor Effects/scripts/bloom_chromatic_compositor.gd" id="4_74nf7"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_l15dy"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("1_lt7hn")
+metadata/_custom_type_script = "uid://caiylw20pv48w"
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_ykxdx"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("2_74nf7")
+color_depth = 18.0
+dither_strength = 0.25
+strength = 0.55
+gamma = 1.7000000000000002
+metadata/_custom_type_script = "uid://cs4psgpwv654e"
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_3omln"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("3_rkoon")
+chroma_bleed = 0.2
+tape_noise = 0.1
+metadata/_custom_type_script = "uid://bv63yhcb5i8t6"
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_xexah"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("4_74nf7")
+bloom_intensity = 0.1
+bloom_threshold = 0.75
+dispersion_spread = 6.0
+spectral_separation = 1.3
+metadata/_custom_type_script = "uid://dq53jkhfrwt8y"
+
+[resource]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_l15dy"), SubResource("CompositorEffect_ykxdx"), SubResource("CompositorEffect_3omln"), SubResource("CompositorEffect_xexah")])

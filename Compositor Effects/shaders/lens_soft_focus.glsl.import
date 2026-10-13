@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dhy31x0n22lm"
+path="res://.godot/imported/lens_soft_focus.glsl-4d16dc5d1dd2a4445cfc21593df010ba.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/lens_soft_focus.glsl"
+dest_files=["res://.godot/imported/lens_soft_focus.glsl-4d16dc5d1dd2a4445cfc21593df010ba.res"]
+
+[params]
+

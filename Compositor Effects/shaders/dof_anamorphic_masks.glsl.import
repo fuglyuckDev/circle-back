@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cbm0xm0sry5qw"
+path="res://.godot/imported/dof_anamorphic_masks.glsl-80bac1c252518289ce079ad3d886e17e.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/dof_anamorphic_masks.glsl"
+dest_files=["res://.godot/imported/dof_anamorphic_masks.glsl-80bac1c252518289ce079ad3d886e17e.res"]
+
+[params]
+

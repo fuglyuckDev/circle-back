@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dudkn8edsbwwc"
+path="res://.godot/imported/bloom_down.glsl-9ebe7551396e82f0b271297fd46e7f86.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/bloom_down.glsl"
+dest_files=["res://.godot/imported/bloom_down.glsl-9ebe7551396e82f0b271297fd46e7f86.res"]
+
+[params]
+

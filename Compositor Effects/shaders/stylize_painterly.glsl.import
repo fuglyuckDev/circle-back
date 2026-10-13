@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cj1t5p2etjma"
+path="res://.godot/imported/stylize_painterly.glsl-6a89e4e7dd7a9ef9669dafd705537a36.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/stylize_painterly.glsl"
+dest_files=["res://.godot/imported/stylize_painterly.glsl-6a89e4e7dd7a9ef9669dafd705537a36.res"]
+
+[params]
+

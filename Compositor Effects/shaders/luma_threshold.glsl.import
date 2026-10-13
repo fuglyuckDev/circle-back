@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://c4go3w8x2346p"
+path="res://.godot/imported/luma_threshold.glsl-4b3135f9706c1e4b0c3630739724581a.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/luma_threshold.glsl"
+dest_files=["res://.godot/imported/luma_threshold.glsl-4b3135f9706c1e4b0c3630739724581a.res"]
+
+[params]
+

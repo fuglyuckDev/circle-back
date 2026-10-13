@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://beylju606gt8e"
+path="res://.godot/imported/digital_glitch.glsl-ce0cbec50c1c4e2ce60223fa39f3f421.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/digital_glitch.glsl"
+dest_files=["res://.godot/imported/digital_glitch.glsl-ce0cbec50c1c4e2ce60223fa39f3f421.res"]
+
+[params]
+

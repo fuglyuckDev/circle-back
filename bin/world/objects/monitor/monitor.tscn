@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bjcltvqcflcbu"]
 
 [ext_resource type="Script" uid="uid://cue3erg6u0ipu" path="res://bin/world/objects/monitor/monitor.gd" id="1_2y7eg"]
-[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_dkwmw"]
 [ext_resource type="PackedScene" uid="uid://bl4lwfwjh6h8o" path="res://bin/world/objects/monitor/screen/monitor_screen.tscn" id="3_hh1fw"]
 [ext_resource type="AudioStream" uid="uid://ba7qn6ghknagd" path="res://bin/sounds/player/keboard_noises.wav" id="4_8pl46"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0oef"]
-albedo_texture = ExtResource("1_dkwmw")
+albedo_color = Color(0.033853278, 0.033853278, 0.033853274, 1)
 uv1_triplanar = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6oa52"]
@@ -45,6 +44,7 @@ mesh = SubResource("PlaneMesh_pitpm")
 [node name="AreaLight3D" type="AreaLight3D" parent="Screen/Screen_on" unique_id=748715864]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.03303647)
 light_color = Color(0.7882353, 1, 1, 1)
+shadow_enabled = true
 area_range = 1.701
 area_size = Vector2(0.6829672, 0.3645693)
 

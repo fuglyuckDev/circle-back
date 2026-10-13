@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dj472qsujwye7"
+path="res://.godot/imported/blur_radial.glsl-0a2948e04f645a05bec876cb4818c535.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/blur_radial.glsl"
+dest_files=["res://.godot/imported/blur_radial.glsl-0a2948e04f645a05bec876cb4818c535.res"]
+
+[params]
+

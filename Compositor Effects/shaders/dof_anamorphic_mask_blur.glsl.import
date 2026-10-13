@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://breylvtsdvtei"
+path="res://.godot/imported/dof_anamorphic_mask_blur.glsl-6fc6ba923594befb61cbe5fa8e1f9246.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/dof_anamorphic_mask_blur.glsl"
+dest_files=["res://.godot/imported/dof_anamorphic_mask_blur.glsl-6fc6ba923594befb61cbe5fa8e1f9246.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://c66iadl8wop5a"
+path="res://.godot/imported/ghost_acc.glsl-82ab2fec1f189dcb13ad11961f9b4536.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/ghost_acc.glsl"
+dest_files=["res://.godot/imported/ghost_acc.glsl-82ab2fec1f189dcb13ad11961f9b4536.res"]
+
+[params]
+

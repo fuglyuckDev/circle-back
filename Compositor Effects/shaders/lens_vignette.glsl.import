@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://lsyumsvvleak"
+path="res://.godot/imported/lens_vignette.glsl-715405dc3a46e48e9cce4a23e3a5b034.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/lens_vignette.glsl"
+dest_files=["res://.godot/imported/lens_vignette.glsl-715405dc3a46e48e9cce4a23e3a5b034.res"]
+
+[params]
+

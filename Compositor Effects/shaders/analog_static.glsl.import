@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://br6cgqqp0s7ua"
+path="res://.godot/imported/analog_static.glsl-a0caee2fa36389ef3d996d40dbbb8206.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/analog_static.glsl"
+dest_files=["res://.godot/imported/analog_static.glsl-a0caee2fa36389ef3d996d40dbbb8206.res"]
+
+[params]
+

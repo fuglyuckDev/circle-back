@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bod3vsa6ktcc7"
+path="res://.godot/imported/drift_warp.glsl-82965087367c945900dd90f32d9a6702.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/drift_warp.glsl"
+dest_files=["res://.godot/imported/drift_warp.glsl-82965087367c945900dd90f32d9a6702.res"]
+
+[params]
+

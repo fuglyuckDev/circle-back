@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dks1nagxj2ame"
+path="res://.godot/imported/crt_grille.glsl-01fca88b86f58da528c7839d223e162f.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/crt_grille.glsl"
+dest_files=["res://.godot/imported/crt_grille.glsl-01fca88b86f58da528c7839d223e162f.res"]
+
+[params]
+

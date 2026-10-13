@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bu5f7hup0w1q5"]
 
-[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_xbjtl"]
+[ext_resource type="Texture2D" uid="uid://cskuv8nawgct4" path="res://bin/world/textures/prototype/computer_mouse_fix.png" id="1_xbjtl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pitpm"]
 albedo_texture = ExtResource("1_xbjtl")
+uv1_scale = Vector3(10.455, 7.737, 5.139)
+uv1_offset = Vector3(0.47, 0, 0.47)
 uv1_triplanar = true
 
 [node name="Mouse" type="Node3D" unique_id=1174542321]

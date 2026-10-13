@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://v3bbggvhifyp"
+path="res://.godot/imported/crt_monitor.glsl-90f18838d2a1e10444042096364f5a81.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/crt_monitor.glsl"
+dest_files=["res://.godot/imported/crt_monitor.glsl-90f18838d2a1e10444042096364f5a81.res"]
+
+[params]
+

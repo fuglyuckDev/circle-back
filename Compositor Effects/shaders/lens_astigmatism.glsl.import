@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bjs46tkkdb8h8"
+path="res://.godot/imported/lens_astigmatism.glsl-9d6333624ef0e678761896d9920a1c83.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/lens_astigmatism.glsl"
+dest_files=["res://.godot/imported/lens_astigmatism.glsl-9d6333624ef0e678761896d9920a1c83.res"]
+
+[params]
+

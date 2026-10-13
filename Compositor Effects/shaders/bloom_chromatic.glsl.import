@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://c1f2e4r66le8b"
+path="res://.godot/imported/bloom_chromatic.glsl-5a47db6e0557d086725aa9335dc15f52.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/bloom_chromatic.glsl"
+dest_files=["res://.godot/imported/bloom_chromatic.glsl-5a47db6e0557d086725aa9335dc15f52.res"]
+
+[params]
+

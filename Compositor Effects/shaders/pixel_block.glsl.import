@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bsrjchqvv5dq2"
+path="res://.godot/imported/pixel_block.glsl-9a21a09b9e0c109dff17bd4b86974b3b.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/pixel_block.glsl"
+dest_files=["res://.godot/imported/pixel_block.glsl-9a21a09b9e0c109dff17bd4b86974b3b.res"]
+
+[params]
+

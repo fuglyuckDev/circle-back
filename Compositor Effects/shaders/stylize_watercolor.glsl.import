@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cgjpsn4t8shgc"
+path="res://.godot/imported/stylize_watercolor.glsl-f43e9598dc959fd6ffdf109118533cc0.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/stylize_watercolor.glsl"
+dest_files=["res://.godot/imported/stylize_watercolor.glsl-f43e9598dc959fd6ffdf109118533cc0.res"]
+
+[params]
+

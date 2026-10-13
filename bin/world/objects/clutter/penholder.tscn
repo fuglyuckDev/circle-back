@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://7mjujd0p7ein"]
 
-[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_0v6g3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jb31k"]
+albedo_color = Color(0.14406255, 0.14406255, 0.14406255, 1)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0v6g3"]
+albedo_color = Color(1, 0, 0.1764706, 1)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ske7h"]
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cares"]
-albedo_texture = ExtResource("1_0v6g3")
+albedo_color = Color(0.27058825, 0.5137255, 1, 1)
 uv1_triplanar = true
 
 [node name="Penholder" type="Node3D" unique_id=1529789785]
@@ -13,21 +22,21 @@ transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0.06736612, 0)
 use_collision = true
 radius = 0.15
 height = 0.389
-material = SubResource("StandardMaterial3D_cares")
+material = SubResource("StandardMaterial3D_jb31k")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1227671994]
-transform = Transform3D(0.32410243, -0.10259289, 0.0056841886, 0.102607235, 0.32414773, 1.9112088e-10, -0.005419167, 0.0017154082, 0.33995247, -0.026653484, 0.12893423, 0.022216856)
+transform = Transform3D(0.3241024, -0.102592885, 0.005684188, 0.10260723, 0.3241477, 2.2393903e-10, -0.0054191663, 0.0017154078, 0.33995244, -0.026653484, 0.12893423, 0.022216856)
 use_collision = true
 radius = 0.028808594
 height = 0.389
-material = SubResource("StandardMaterial3D_cares")
+material = SubResource("StandardMaterial3D_0v6g3")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1559377748]
 transform = Transform3D(0.1374655, -0.03876353, 0.30854598, 0.10078506, 0.3246929, -0.004110331, -0.29418635, 0.0931231, 0.14276722, 0.0023290515, 0.1293123, 0.03124711)
 use_collision = true
 radius = 0.028808594
 height = 0.389
-material = SubResource("StandardMaterial3D_cares")
+material = SubResource("StandardMaterial3D_ske7h")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=1909798430]
 transform = Transform3D(-0.097721316, 0.026223699, -0.32459646, 0.10078505, 0.3246929, -0.004110328, 0.30966583, -0.0974004, -0.101095214, 0.015311182, 0.12313974, -0.028703973)

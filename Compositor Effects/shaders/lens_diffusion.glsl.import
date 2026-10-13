@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cwihlxkdcgr12"
+path="res://.godot/imported/lens_diffusion.glsl-6cc1ef0c08c8084ae22804b7248f3f63.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/lens_diffusion.glsl"
+dest_files=["res://.godot/imported/lens_diffusion.glsl-6cc1ef0c08c8084ae22804b7248f3f63.res"]
+
+[params]
+

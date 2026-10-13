@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://b5pxcuc3cipin"
+path="res://.godot/imported/film_halation.glsl-2f075e584c49fb54ed6e43086af106d0.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/film_halation.glsl"
+dest_files=["res://.godot/imported/film_halation.glsl-2f075e584c49fb54ed6e43086af106d0.res"]
+
+[params]
+

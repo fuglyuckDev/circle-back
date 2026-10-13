@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://uywltq522d70"]
 
-[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_fdpgf"]
+[ext_resource type="Texture2D" uid="uid://b50ksufnwhapn" path="res://bin/world/textures/prototype/matting-1000-mm-architextures.jpg" id="1_fdpgf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0oef"]
+albedo_color = Color(0.15686275, 0.10980392, 0.45490196, 1)
 albedo_texture = ExtResource("1_fdpgf")
 uv1_triplanar = true
 

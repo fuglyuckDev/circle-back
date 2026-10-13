@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bbwleyrglf5iu"
+path="res://.godot/imported/kodak_film_emulation.glsl-50d58d92098dcabcc20753c9838620e5.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/kodak_film_emulation.glsl"
+dest_files=["res://.godot/imported/kodak_film_emulation.glsl-50d58d92098dcabcc20753c9838620e5.res"]
+
+[params]
+

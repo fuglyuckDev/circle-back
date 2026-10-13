@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://o3ugsbpimyuy"
 path.s3tc="res://.godot/imported/windows-xp-3.png-dfeee0b6bf08241ecad66eaa26755fb4.s3tc.ctex"
+path.etc2="res://.godot/imported/windows-xp-3.png-dfeee0b6bf08241ecad66eaa26755fb4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://bin/world/objects/monitor/windows-xp-3.png"
-dest_files=["res://.godot/imported/windows-xp-3.png-dfeee0b6bf08241ecad66eaa26755fb4.s3tc.ctex"]
+dest_files=["res://.godot/imported/windows-xp-3.png-dfeee0b6bf08241ecad66eaa26755fb4.s3tc.ctex", "res://.godot/imported/windows-xp-3.png-dfeee0b6bf08241ecad66eaa26755fb4.etc2.ctex"]
 
 [params]
 

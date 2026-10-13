@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dpvdnuke1ah5i"
+path="res://.godot/imported/bloom_up.glsl-7167131e2b73f2ca16cfca8893580529.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/bloom_up.glsl"
+dest_files=["res://.godot/imported/bloom_up.glsl-7167131e2b73f2ca16cfca8893580529.res"]
+
+[params]
+

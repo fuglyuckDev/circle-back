@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dmx4ry7g3hfji"
+path="res://.godot/imported/night_vision.glsl-1de3ea221c91f2868d42aabd89b355f5.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/night_vision.glsl"
+dest_files=["res://.godot/imported/night_vision.glsl-1de3ea221c91f2868d42aabd89b355f5.res"]
+
+[params]
+

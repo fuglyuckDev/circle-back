@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://ci3vnqy5ihdqn"
+path="res://.godot/imported/stylize_halftone.glsl-8ca6c36a376df14d4ba69dadf630ffb9.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/stylize_halftone.glsl"
+dest_files=["res://.godot/imported/stylize_halftone.glsl-8ca6c36a376df14d4ba69dadf630ffb9.res"]
+
+[params]
+

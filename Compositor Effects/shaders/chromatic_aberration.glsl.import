@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dex2txty3s2oj"
+path="res://.godot/imported/chromatic_aberration.glsl-18b01cc79fb477ef06666938fa0190e6.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/chromatic_aberration.glsl"
+dest_files=["res://.godot/imported/chromatic_aberration.glsl-18b01cc79fb477ef06666938fa0190e6.res"]
+
+[params]
+

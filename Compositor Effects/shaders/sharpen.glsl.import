@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bhcrwtbtseu6q"
+path="res://.godot/imported/sharpen.glsl-097a15f065940e70bea0954b1a76d621.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/sharpen.glsl"
+dest_files=["res://.godot/imported/sharpen.glsl-097a15f065940e70bea0954b1a76d621.res"]
+
+[params]
+

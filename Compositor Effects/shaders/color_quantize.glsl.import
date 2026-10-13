@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://qrd7tc82o0yq"
+path="res://.godot/imported/color_quantize.glsl-4d19f7ddbf8beb5efea2ca9813e3bbba.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/color_quantize.glsl"
+dest_files=["res://.godot/imported/color_quantize.glsl-4d19f7ddbf8beb5efea2ca9813e3bbba.res"]
+
+[params]
+

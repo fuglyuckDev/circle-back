@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bjdv7fjrg82ka"
+path="res://.godot/imported/film_emulsion_bleed.glsl-3caff228773cb6a6a6c5973d89dde650.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/film_emulsion_bleed.glsl"
+dest_files=["res://.godot/imported/film_emulsion_bleed.glsl-3caff228773cb6a6a6c5973d89dde650.res"]
+
+[params]
+

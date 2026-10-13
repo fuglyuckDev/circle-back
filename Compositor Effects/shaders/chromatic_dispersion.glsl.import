@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://c2452le3idxfu"
+path="res://.godot/imported/chromatic_dispersion.glsl-cddfd252a30c73bcf5b425e78ae89fdd.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/chromatic_dispersion.glsl"
+dest_files=["res://.godot/imported/chromatic_dispersion.glsl-cddfd252a30c73bcf5b425e78ae89fdd.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://b4wo3iex8fomp"
+path="res://.godot/imported/copy_image.glsl-4e569c475f937ffa8cd6e959206ec990.res"
+
+[deps]
+
+source_file="res://Compositor Effects/shaders/copy_image.glsl"
+dest_files=["res://.godot/imported/copy_image.glsl-4e569c475f937ffa8cd6e959206ec990.res"]
+
+[params]
+

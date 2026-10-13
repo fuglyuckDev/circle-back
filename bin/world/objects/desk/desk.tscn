@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://d0snmdpat4t0k"]
 
 [ext_resource type="Script" uid="uid://bk3fv30b42yed" path="res://bin/world/objects/desk/desk.gd" id="1_cares"]
-[ext_resource type="Texture2D" uid="uid://debglaaodmrlr" path="res://bin/world/textures/prototype/texture_06.png" id="1_qpdyk"]
+[ext_resource type="Texture2D" uid="uid://11clx738juvb" path="res://bin/world/textures/prototype/wood-grain.png" id="2_su5sq"]
 [ext_resource type="Script" uid="uid://chipp4l22k4ro" path="res://bin/world/objects/desk/default_items.gd" id="2_u0oef"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pitpm"]
-albedo_texture = ExtResource("1_qpdyk")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10cbg"]
+albedo_color = Color(0.9973789, 0.9526873, 0.90840626, 1)
+albedo_texture = ExtResource("2_su5sq")
 clearcoat_enabled = true
+clearcoat = 0.03
+clearcoat_roughness = 0.45
+detail_mask = ExtResource("2_su5sq")
+uv1_scale = Vector3(2.795, 2.795, 2.795)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pitpm"]
+albedo_color = Color(0, 0, 0, 1)
 clearcoat = 0.11
 clearcoat_roughness = 0.12
 uv1_triplanar = true
@@ -23,7 +32,7 @@ script = ExtResource("1_cares")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8183579, 0)
 use_collision = true
 size = Vector3(2, 0.03769532, 1)
-material = SubResource("StandardMaterial3D_pitpm")
+material = SubResource("StandardMaterial3D_10cbg")
 
 [node name="Leg" type="CSGBox3D" parent="DeskGeometry" unique_id=2138208271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97, 0.38842505, -0.485)
