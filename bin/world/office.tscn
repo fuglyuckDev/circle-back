@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvpkagxbs0krb"]
 
 [ext_resource type="Script" uid="uid://cj748h68demux" path="res://bin/world/office.gd" id="1_vlusl"]
+[ext_resource type="Script" uid="uid://ble2afinsreb8" path="res://bin/world/tutorial.gd" id="2_25ilo"]
 [ext_resource type="Texture2D" uid="uid://mfixptnntwh1" path="res://bin/world/textures/skybox/skybox_test_2.jpg" id="2_743nn"]
 [ext_resource type="PackedScene" uid="uid://dnbuxacpfltc4" path="res://bin/player/player.tscn" id="2_dt7po"]
 [ext_resource type="PackedScene" uid="uid://cxqsnf3bj1sk8" path="res://bin/entities/manager/manger.tscn" id="4_ouqls"]
@@ -80,6 +81,14 @@ size = Vector2(80, 28.41)
 
 [node name="Office" type="Node3D" unique_id=1774504172]
 script = ExtResource("1_vlusl")
+
+[node name="tutorial" type="Node" parent="." unique_id=1526992174]
+script = ExtResource("2_25ilo")
+
+[node name="Timer" type="Timer" parent="tutorial" unique_id=560581471]
+unique_name_in_owner = true
+wait_time = 2.0
+autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1136975898]
 environment = SubResource("Environment_1spsv")
@@ -1772,4 +1781,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.099812, 0.44276094, 36.01
 [node name="Target7" type="Marker3D" parent="RoamingTargets" unique_id=801567861 groups=["roam_target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.298595, 0.44276094, 38.62898)
 
+[connection signal="timeout" from="tutorial/Timer" to="tutorial" method="_on_timer_timeout"]
 [connection signal="collided_with_player" from="Manger" to="Player" method="_on_manger_collided_with_player"]

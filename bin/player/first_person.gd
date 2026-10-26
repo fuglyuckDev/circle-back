@@ -6,6 +6,8 @@ var returned_camera_pos := false
 
 @export_category("Camera Movement")
 @export_group("Head Bob")
+@export var default_head_height := 0.0
+@export var default_phone_height := -0.085
 @export var hb_amplitude := 1.0
 @export var hb_freq := 1.0
 @export_group("Screenshake")
@@ -45,10 +47,12 @@ func _head_bob(delta: float) -> void:
 	if player.velocity.length() > 0.0 and player.is_on_floor():
 		var sine = sin(hb_time * (hb_freq * player.velocity.length()) ) * hb_amplitude
 		%FirstPersonView.position.y = %FirstPersonView.position.y + sine
+		%Phone.position.y = %Phone.position.y - (sine)/2
 		play_footstep(clampf(remap(sine, -0.003, 0.004, 0.0, 1.0),0.0,1.0))
 	elif player.is_on_floor():
 		var tween = create_tween()
-		tween.tween_property(%FirstPersonView, "position:y", 0.0, 0.2)
+		tween.parallel().tween_property(%FirstPersonView, "position:y",default_head_height, 0.5 )
+		tween.parallel().tween_property(%Phone, "position:y", default_phone_height, 0.5 )
 
 func play_footstep(headbob_value):
 	if headbob_value == 0.0:

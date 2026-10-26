@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://cnv45hyhq826q"]
+
+[ext_resource type="Script" uid="uid://i6e1qyn3k24u" path="res://bin/player/viewmodel/phone.gd" id="1_11tgd"]
+[ext_resource type="PackedScene" uid="uid://b127mof4y6rld" path="res://bin/player/viewmodel/phone_screen.tscn" id="2_0ka7t"]
+[ext_resource type="AudioStream" uid="uid://bhysl3k5ehkfa" path="res://bin/player/viewmodel/flashlight_click_sfx.mp3" id="3_rq7ns"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_melqe"]
+albedo_color = Color(0.021434637, 0.021434635, 0.021434633, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pitpm"]
+material = SubResource("StandardMaterial3D_melqe")
+size = Vector3(0.075927734, 0.14160156, 0.013671875)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ka7t"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11tgd"]
+resource_local_to_scene = true
+render_priority = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_texture = SubResource("ViewportTexture_0ka7t")
+albedo_texture_force_srgb = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pitpm"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_11tgd")
+size = Vector2(0.07, 0.13)
+
+[sub_resource type="Animation" id="Animation_11tgd"]
+length = 0.266
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.095, 0.03, 0.23), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(3.9999957, 3.9999957),
+"update": 0,
+"values": [Vector3(0, 0.62831855, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0ka7t"]
+resource_name = "flashlight"
+length = 0.155
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.005, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.11),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.14660765), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rq7ns"]
+resource_name = "view_phone"
+length = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.095, 0.03, 0.23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.62831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rq7ns"]
+_data = {
+&"RESET": SubResource("Animation_11tgd"),
+&"flashlight": SubResource("Animation_0ka7t"),
+&"view_phone": SubResource("Animation_rq7ns")
+}
+
+[node name="Phone" type="Node3D" unique_id=1106317775]
+script = ExtResource("1_11tgd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=978137093]
+transform = Transform3D(0.809017, 0, 0.58778524, 0, 1, 0, -0.58778524, 0, 0.809017, -0.095, 0.03, 0.23)
+mesh = SubResource("BoxMesh_pitpm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=107795384]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.0069233216)
+mesh = SubResource("PlaneMesh_pitpm")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="MeshInstance3D" unique_id=1464312712]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03204567, -0.007633418)
+light_color = Color(0.83137256, 1, 1, 1)
+light_size = 0.019
+shadow_enabled = true
+area_attenuation = 0.652
+area_size = Vector2(0.055, 0.055)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=768465449]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_rq7ns")
+playback_auto_capture_transition_type = 9
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=785795230]
+unique_name_in_owner = true
+stream = ExtResource("3_rq7ns")
+attenuation_model = 3
+max_db = -7.127
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1843052934]
+size = Vector2i(512, 852)
+size_2d_override_stretch = true
+
+[node name="PhoneScreen" parent="SubViewport" unique_id=1250191461 instance=ExtResource("2_0ka7t")]

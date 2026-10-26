@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://b127mof4y6rld"]
+
+[ext_resource type="Shader" uid="uid://bq1a6px10k63j" path="res://bin/player/viewmodel/phone_screen.gdshader" id="1_x54m0"]
+[ext_resource type="Texture2D" uid="uid://bmx6ttejo6gld" path="res://bin/player/viewmodel/icons8-phone-50.png" id="2_5teqo"]
+[ext_resource type="Script" uid="uid://co0746l0flidn" path="res://bin/player/viewmodel/v_box_container.gd" id="3_3hlyt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x54m0"]
+font_size = 43
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pitpm"]
+shader = ExtResource("1_x54m0")
+
+[sub_resource type="Theme" id="Theme_pitpm"]
+VBoxContainer/constants/separation = 35
+
+[node name="PhoneScreen" type="Control" unique_id=1250191461]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1771613167]
+z_index = 1
+layout_mode = 0
+offset_right = 515.0
+offset_bottom = 93.0
+color = Color(0.69550276, 0.69550323, 0.6955031, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1995210711]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 17.0
+offset_right = 309.0
+offset_bottom = 79.0
+text = "George F"
+label_settings = SubResource("LabelSettings_x54m0")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=2126660992]
+material = SubResource("ShaderMaterial_pitpm")
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 88.0
+offset_bottom = 84.0
+color = Color(1, 0.3647059, 0.32156864, 1)
+
+[node name="Label2" type="Label" parent="ColorRect/ColorRect" unique_id=864576325]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 6.0
+offset_right = 58.0
+offset_bottom = 68.0
+text = "G"
+label_settings = SubResource("LabelSettings_x54m0")
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=2037727296]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 23.0
+offset_right = 481.0
+offset_bottom = 73.0
+texture = ExtResource("2_5teqo")
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=1669476794]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 91.0
+offset_right = 520.0
+offset_bottom = 875.0
+color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/ColorRect2" unique_id=1884826185]
+propagate_maximum_size = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.96000004
+anchor_right = 0.056
+anchor_bottom = 0.96000004
+offset_left = -0.23200035
+offset_top = -726.64
+offset_right = 452.768
+offset_bottom = 0.35998535
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ColorRect2/MarginContainer" unique_id=76518627]
+layout_mode = 2
+theme = SubResource("Theme_pitpm")
+script = ExtResource("3_3hlyt")

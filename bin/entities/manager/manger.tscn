@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dcfcj08nhlwgq" path="res://bin/entities/manager/roaming.gd" id="5_qigyt"]
 [ext_resource type="Script" uid="uid://d4bfdte3buehq" path="res://bin/entities/manager/persuing.gd" id="6_qigyt"]
 [ext_resource type="Script" uid="uid://5xjg3ed5f5ix" path="res://bin/entities/manager/searching.gd" id="7_h17ng"]
+[ext_resource type="Script" uid="uid://ck2xi7388dvi1" path="res://bin/entities/manager/collision_polygon_3d.gd" id="8_7pynp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y43eu"]
 radius = 0.37402344
@@ -90,6 +91,7 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.99999964, 0, 1.0147134
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 depth = 2.0
 polygon = PackedVector2Array(0, 0, 5, 9, -5, 9)
+script = ExtResource("8_7pynp")
 
 [node name="KillRadius" type="Area3D" parent="." unique_id=1204772149]
 

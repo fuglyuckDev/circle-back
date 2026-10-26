@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ba1ds5hdygiu5" path="res://bin/sounds/player/feets/softshoe_generic4.wav" id="8_cv8kb"]
 [ext_resource type="AudioStream" uid="uid://3tvj1kba5uar" path="res://bin/sounds/player/feets/softshoe_generic5.wav" id="9_p5htp"]
 [ext_resource type="AudioStream" uid="uid://haf6ms4fuf2r" path="res://bin/sounds/player/feets/softshoe_generic6.wav" id="10_l15dy"]
+[ext_resource type="PackedScene" uid="uid://cnv45hyhq826q" path="res://bin/player/viewmodel/phone.tscn" id="10_melqe"]
 [ext_resource type="AudioStream" uid="uid://cfhwj5bs8hffa" path="res://bin/sounds/player/feets/softshoe_generic7.wav" id="11_melqe"]
 [ext_resource type="AudioStream" uid="uid://yj8s32d0ay4i" path="res://bin/sounds/player/feets/softshoe_generic8.wav" id="12_i04xk"]
 
@@ -80,6 +81,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Head/FirstPersonView" unique_id=1181531334]
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Head/FirstPersonView/CanvasLayer" unique_id=1786944908]
 offset_left = 802.0
@@ -88,6 +90,10 @@ offset_right = 1149.0
 offset_bottom = 517.0
 alignment = 2
 script = ExtResource("6_l15dy")
+
+[node name="Phone" parent="Head/FirstPersonView" unique_id=1106317775 instance=ExtResource("10_melqe")]
+unique_name_in_owner = true
+transform = Transform3D(0.7768157, 0, -0.62972796, 0, 1, 0, 0.62972796, 0, 0.7768157, 0.23214382, -0.08249843, -0.2854155)
 
 [node name="CameraState" type="Node" parent="Head" unique_id=928013051 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -110,6 +116,7 @@ script = ExtResource("5_fg1fx")
 metadata/_custom_type_script = "uid://bp0gb6qwxefli"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head" unique_id=671391713]
+visible = false
 light_energy = 0.078
 
 [node name="WorldModel" type="Node3D" parent="." unique_id=1066729859]

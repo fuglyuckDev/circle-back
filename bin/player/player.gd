@@ -38,7 +38,7 @@ func _process(_delta) -> void:
 		var h_look:float = Input.get_axis("l_right", "l_left")
 		rotate_y(h_look * joypad_sensitivity)
 		var v_look:float = Input.get_axis("l_down", "l_up")
-		%Head.rotate_x(v_look * look_sensitivity)
+		%Head.rotate_x(v_look * joypad_sensitivity)
 		%Head.rotation.x = clamp(%Head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:

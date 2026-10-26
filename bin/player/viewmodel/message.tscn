@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cp5mqhape6qcy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmkgx"]
+
+[sub_resource type="Theme" id="Theme_vrxi0"]
+default_font_size = 50
+Button/styles/normal = SubResource("StyleBoxFlat_nmkgx")
+
+[node name="Message" type="Button" unique_id=157528581]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_vrxi0")
+text = "Hello world!"
+alignment = 0
+text_overrun_behavior = 2
+autowrap_mode = 3
