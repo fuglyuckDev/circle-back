@@ -37,7 +37,6 @@ stream_6/stream = ExtResource("12_i04xk")
 
 [node name="Player" type="CharacterBody3D" unique_id=1936977173 groups=["player"]]
 script = ExtResource("1_om5rw")
-look_sensitivity = 0.003
 SPEED = 3.0
 SPRINT_SPEED = 6.0
 

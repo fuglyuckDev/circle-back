@@ -22,6 +22,7 @@ boot_splash/minimum_display_time=50
 
 GameState="*uid://0vmen0xll6hk"
 SignalBus="*uid://bfdw3ipw7xl8"
+Settings="*uid://ca10dhnbakhtv"
 
 [display]
 

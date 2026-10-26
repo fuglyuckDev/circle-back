@@ -8,8 +8,8 @@ var is_persued := false
 var can_interact := true
 
 @export_category("Camera Settings")
-@export var look_sensitivity : float = 0.006
-@export var joypad_sensitivity : float = 0.03
+var look_sensitivity : float = Settings.mouse_sensitivity
+var joypad_sensitivity : float = Settings.joypad_sensitivity
 @export var default_fov : float = 75
 @export var sprint_fov : float = 90
 @export_category("Movement Settings")
@@ -22,8 +22,8 @@ var can_interact := true
 @export var MAX_DISTANCE : float = 25.0
 @export var MIN_DB = -80.0
 @export var MAX_DB = -30.0
-@export var MAX_BLUR = 0.98
-@export var MIN_BLUR = 0.9
+@export var MAX_BLUR = Settings.motion_blur
+@export var MIN_BLUR = MAX_BLUR - 0.08
 
 func _ready() -> void:
 	SignalBus.enemy_enter_view.connect(_on_manager_in_view)

@@ -4,25 +4,23 @@
 [ext_resource type="AudioStream" uid="uid://d0mpmpykrw4wq" path="res://bin/sounds/ui/buttonrollover.wav" id="2_4n33i"]
 [ext_resource type="Script" uid="uid://whx8j8u0yfe2" path="res://bin/ui/start_menu/start.gd" id="2_fddy1"]
 [ext_resource type="Texture2D" uid="uid://bkhsb7bfaa6xq" path="res://circle_back_icon.png" id="2_ld3kh"]
+[ext_resource type="Theme" uid="uid://bt78g5j7o1bo7" path="res://bin/ui/start_menu/menu_button_theme.tres" id="3_4f8q3"]
 [ext_resource type="Script" uid="uid://cn1gyhv4fooh3" path="res://bin/ui/start_menu/quit.gd" id="3_4hjxs"]
 [ext_resource type="AudioStream" uid="uid://dhgrjaiirwwgh" path="res://bin/sounds/ui/buttonclickrelease.wav" id="3_4n33i"]
+[ext_resource type="Script" uid="uid://lqv1lkxo0plt" path="res://bin/ui/start_menu/options.gd" id="5_toxwo"]
 [ext_resource type="AudioStream" uid="uid://b8qeq1radh8m6" path="res://bin/world/sounds/ambience/horror_score_1.mp3" id="6_xij3w"]
+[ext_resource type="Script" uid="uid://buhccebng4hy0" path="res://bin/ui/start_menu/rich_text_label.gd" id="10_toxwo"]
+[ext_resource type="Script" uid="uid://7qoooy0mppp4" path="res://bin/ui/start_menu/mouse_sensitivity_slider.gd" id="10_ynqff"]
+[ext_resource type="Script" uid="uid://cwpi5nw16clrk" path="res://bin/ui/start_menu/controller_sensitivity_slider.gd" id="12_8uvt3"]
+[ext_resource type="Script" uid="uid://doa5q5uxtx5eo" path="res://bin/ui/start_menu/motion_blur_slider.gd" id="13_60t6r"]
+[ext_resource type="Script" uid="uid://b8negehrymb2b" path="res://bin/ui/start_menu/save_options.gd" id="14_8uvt3"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4qru"]
+[sub_resource type="LabelSettings" id="LabelSettings_pitpm"]
+font_size = 25
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_esmnr"]
+[sub_resource type="LabelSettings" id="LabelSettings_6oa52"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbnax"]
-
-[sub_resource type="Theme" id="Theme_pitpm"]
-Button/colors/font_color = Color(0.6022627, 0.6022627, 0.6022627, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/styles/focus = null
-Button/styles/hover = SubResource("StyleBoxEmpty_m4qru")
-Button/styles/normal = SubResource("StyleBoxEmpty_esmnr")
-Button/styles/pressed = SubResource("StyleBoxEmpty_tbnax")
-
-[node name="StartMenuUi" type="Control" unique_id=1311842879]
+[node name="StartMenuUi" type="Control" unique_id=1311842879 node_paths=PackedStringArray("buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3n3mm")
+buttons = [NodePath("Options"), NodePath("Start"), NodePath("Quit"), NodePath("PanelContainer/container/CloseOptions"), NodePath("PanelContainer/container/SaveOptions")]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=162426127]
 layout_mode = 0
@@ -56,18 +55,28 @@ offset_left = 117.0
 offset_top = 309.0
 offset_right = 205.0
 offset_bottom = 340.0
-theme = SubResource("Theme_pitpm")
+theme = ExtResource("3_4f8q3")
 text = "Start Game"
 alignment = 0
 script = ExtResource("2_fddy1")
 
+[node name="Options" type="Button" parent="." unique_id=1007546878]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 339.0
+offset_right = 182.0
+offset_bottom = 370.0
+theme = ExtResource("3_4f8q3")
+text = "Options"
+script = ExtResource("5_toxwo")
+
 [node name="Quit" type="Button" parent="." unique_id=721789663]
 layout_mode = 0
 offset_left = 117.0
-offset_top = 341.0
+offset_top = 368.865
 offset_right = 205.0
-offset_bottom = 372.0
-theme = SubResource("Theme_pitpm")
+offset_bottom = 399.865
+theme = ExtResource("3_4f8q3")
 text = "Quit"
 alignment = 0
 script = ExtResource("3_4hjxs")
@@ -87,5 +96,114 @@ stream = ExtResource("6_xij3w")
 autoplay = true
 parameters/looping = true
 
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=520107428]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 647.13
+offset_top = 183.145
+offset_right = 809.13
+offset_bottom = 478.14514
+theme = ExtResource("3_4f8q3")
+
+[node name="container" type="VBoxContainer" parent="PanelContainer" unique_id=1507962243]
+layout_mode = 2
+theme_override_constants/separation = 27
+
+[node name="Label" type="Label" parent="PanelContainer/container" unique_id=1997342908]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_pitpm")
+
+[node name="option" type="VBoxContainer" parent="PanelContainer/container" unique_id=2065855874]
+layout_mode = 2
+
+[node name="MouseSensitivity" type="Label" parent="PanelContainer/container/option" unique_id=745642575]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="MouseSensitivitySlider" type="HSlider" parent="PanelContainer/container/option" unique_id=1852417519]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.006
+script = ExtResource("10_ynqff")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/container/option" unique_id=890053160]
+layout_mode = 2
+theme = ExtResource("3_4f8q3")
+fit_content = true
+script = ExtResource("10_toxwo")
+
+[node name="option2" type="VBoxContainer" parent="PanelContainer/container" unique_id=1233596364]
+layout_mode = 2
+
+[node name="ControllerSensitivity" type="Label" parent="PanelContainer/container/option2" unique_id=1236868794]
+layout_mode = 2
+text = "Controller Sensitivity"
+label_settings = SubResource("LabelSettings_6oa52")
+
+[node name="ControllerSensitivitySlider" type="HSlider" parent="PanelContainer/container/option2" unique_id=2118866097]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.001
+max_value = 0.1
+step = 0.01
+value = 0.031
+script = ExtResource("12_8uvt3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/container/option2" unique_id=1655787660]
+layout_mode = 2
+theme = ExtResource("3_4f8q3")
+text = "0.06"
+fit_content = true
+script = ExtResource("10_toxwo")
+
+[node name="option3" type="VBoxContainer" parent="PanelContainer/container" unique_id=1364068602]
+layout_mode = 2
+
+[node name="MotionBlur" type="Label" parent="PanelContainer/container/option3" unique_id=2054361632]
+layout_mode = 2
+text = "Blur Amount"
+
+[node name="MotionBlurSlider" type="HSlider" parent="PanelContainer/container/option3" unique_id=1258915885]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 0.98
+step = 0.01
+value = 0.98
+script = ExtResource("13_60t6r")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/container/option3" unique_id=919680515]
+layout_mode = 2
+theme = ExtResource("3_4f8q3")
+text = "0.06"
+fit_content = true
+script = ExtResource("10_toxwo")
+
+[node name="SaveOptions" type="Button" parent="PanelContainer/container" unique_id=2139114059]
+layout_mode = 2
+text = "Save"
+script = ExtResource("14_8uvt3")
+
+[node name="CloseOptions" type="Button" parent="PanelContainer/container" unique_id=1751478256]
+layout_mode = 2
+theme = ExtResource("3_4f8q3")
+text = "Close"
+script = ExtResource("5_toxwo")
+
 [connection signal="button_down" from="Start" to="Start" method="_on_button_down"]
+[connection signal="pressed" from="Options" to="Options" method="_on_pressed"]
+[connection signal="pressed" from="Options" to="PanelContainer/container/option/MouseSensitivitySlider" method="_on_options_pressed"]
 [connection signal="button_down" from="Quit" to="Quit" method="_on_button_down"]
+[connection signal="value_changed" from="PanelContainer/container/option/MouseSensitivitySlider" to="PanelContainer/container/option/MouseSensitivitySlider" method="_on_value_changed"]
+[connection signal="value_changed" from="PanelContainer/container/option/MouseSensitivitySlider" to="PanelContainer/container/option/RichTextLabel" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/container/option2/ControllerSensitivitySlider" to="PanelContainer/container/option2/ControllerSensitivitySlider" method="_on_value_changed"]
+[connection signal="value_changed" from="PanelContainer/container/option2/ControllerSensitivitySlider" to="PanelContainer/container/option2/RichTextLabel" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/container/option3/MotionBlurSlider" to="PanelContainer/container/option3/MotionBlurSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="PanelContainer/container/option3/MotionBlurSlider" to="PanelContainer/container/option3/RichTextLabel" method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="PanelContainer/container/SaveOptions" to="PanelContainer/container/SaveOptions" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/container/CloseOptions" to="Options" method="_on_close_options_pressed"]
+[connection signal="pressed" from="PanelContainer/container/CloseOptions" to="PanelContainer/container/CloseOptions" method="_on_pressed"]
