@@ -118,6 +118,9 @@ func _on_light_flicker_body_entered(body: Node3D) -> void:
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
 	SignalBus.enemy_enter_view.emit(self.global_position)
 
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	SignalBus.enemy_exit_view.emit()
+
 func _on_manager_stage_change(value:int):
 	speed_modifier = value * 0.5
 	if value >= 1.0:

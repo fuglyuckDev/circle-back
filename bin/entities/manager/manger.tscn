@@ -128,3 +128,4 @@ aabb = AABB(-0.22312264, -1, -0.37861642, 0.44624528, 2, 0.51992816)
 [connection signal="body_entered" from="KillRadius" to="." method="_on_kill_radius_body_entered"]
 [connection signal="body_entered" from="light_flicker" to="." method="_on_light_flicker_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

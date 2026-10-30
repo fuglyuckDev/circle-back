@@ -6,6 +6,9 @@ var crouch_height = default_head_height / 2
 var is_hiding := false
 var is_persued := false
 var can_interact := true
+var manager_occluded := true
+var is_manager_in_frustrum := false
+var can_jumpscare := true
 
 @export_category("Camera Settings")
 var look_sensitivity : float = Settings.mouse_sensitivity
@@ -27,6 +30,7 @@ var joypad_sensitivity : float = Settings.joypad_sensitivity
 
 func _ready() -> void:
 	SignalBus.enemy_enter_view.connect(_on_manager_in_view)
+	SignalBus.enemy_exit_view.connect(_on_manager_exit_view)
 	SignalBus.persuit.connect(_on_manager_persuit)
 	SignalBus.exit_persuit.connect(_on_manager_exit_persuit)
 	SignalBus.is_hiding.connect(_on_is_hiding)
@@ -57,9 +61,22 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 		
+		_check_manager()
 		_sprint(delta)
 		_crouch(delta)
 		move_and_slide()
+	_handle_manager_jumpscare()
+
+func _check_manager()->void:
+	%ManagerCheck.target_position = to_local(enemy.global_position) # Y Height of the manager / 2
+	var collision = %ManagerCheck.get_collider()
+	if collision:
+		if collision.get_groups().size() > 0:
+			if collision.get_groups()[0] == &"enemy":
+				if manager_occluded:
+					manager_occluded = false
+		elif !manager_occluded:
+			manager_occluded = true
 
 func _crouch(_delta):
 	var tween = create_tween()
@@ -139,16 +156,30 @@ func _on_manager_exit_persuit() -> void:
 	is_persued = false
 
 func _on_manager_in_view(enemy_position:Vector3) -> void:
-	var distance_to_enemy = self.global_position.distance_to(enemy_position)
-	var distance_to_db = clampf(remap(distance_to_enemy, 0.0, MAX_DISTANCE, MAX_DB ,MIN_DB), MIN_DB, MAX_DB) 
-	var distance_to_intensity = clampf(remap(distance_to_enemy, 0.0, MAX_DISTANCE, MAX_BLUR, MIN_BLUR ), MIN_BLUR, MAX_BLUR)
-	if %StingTimer.is_stopped() and distance_to_enemy < MAX_DISTANCE:
-		%Sting.volume_db = distance_to_db
-		%Sting.stream = preload("res://bin/sounds/player/horror-stinger.mp3")
-		%Sting.play()
-		%StingTimer.start()
-		toggle_blur_effect(distance_to_intensity)
-		SignalBus.jumpscare_screenshake.emit()
+	is_manager_in_frustrum = true
+
+func _on_manager_exit_view() -> void:
+	is_manager_in_frustrum = false
+	can_jumpscare = true
+
+func _handle_manager_jumpscare() -> void:
+	if can_jumpscare:
+		if is_manager_in_frustrum:
+			if !manager_occluded:
+				var distance_to_enemy = self.global_position.distance_to(enemy.global_position)
+				var distance_to_db = clampf(remap(distance_to_enemy, 0.0, MAX_DISTANCE, MAX_DB ,MIN_DB), MIN_DB, MAX_DB) 
+				var distance_to_intensity = clampf(remap(distance_to_enemy, 0.0, MAX_DISTANCE, MAX_BLUR, MIN_BLUR ), MIN_BLUR, MAX_BLUR)
+				if %StingTimer.is_stopped() and distance_to_enemy < MAX_DISTANCE:
+					%Sting.volume_db = distance_to_db
+					%Sting.stream = preload("res://bin/sounds/player/horror-stinger.mp3")
+					%Sting.play()
+					%StingTimer.start()
+					toggle_blur_effect(distance_to_intensity)
+					SignalBus.jumpscare_screenshake.emit()
+					can_jumpscare = false
+			else:
+				if !can_jumpscare:
+					can_jumpscare = true
 
 func _on_is_hiding(value) -> void:
 	is_hiding = value
