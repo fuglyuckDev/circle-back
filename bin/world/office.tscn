@@ -87,7 +87,7 @@ script = ExtResource("2_25ilo")
 
 [node name="Timer" type="Timer" parent="tutorial" unique_id=560581471]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1136975898]

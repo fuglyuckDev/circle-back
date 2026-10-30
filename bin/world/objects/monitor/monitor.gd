@@ -1,5 +1,8 @@
 extends Node3D
 
+var messages := ["Good job, keep going.", "Nice work, keep it up.", "Well done, on to the next.", "Niceeeee, keep going man, you got this.", "wtf nice job", "Ugh, who'd even write that code? gj.", "lmao that was mine, please ignore the giga nested for loop :D"]
+var rng = RandomNumberGenerator.new()
+
 func interact() -> void:
 	%Complete_timer.start()
 	%MonitorScreen.interacted()
@@ -16,11 +19,9 @@ func _on_complete_timer_timeout() -> void:
 	GameState.completed_tasks = GameState.completed_tasks + 1
 	SignalBus.task_complete.emit()
 	SignalBus.unmount_user.emit()
-	var str_tasks_left = str(GameState.useable_monitors - GameState.completed_tasks)
-	var str_completed_tasks = str(GameState.completed_tasks)
-	var tasks_string = ""
-	if GameState.completed_tasks > 1:
-		tasks_string = " tasks, "
+	
+	var random_message_idx = rng.randi_range(0, messages.size() - 1)
+	if GameState.completed_tasks == GameState.useable_monitors - 1:
+		SignalBus.ui_popup.emit("Sick, one left, good luck.")
 	else:
-		tasks_string = " task, "
-	SignalBus.ui_popup.emit("Completed " + str_completed_tasks + tasks_string + str_tasks_left + " left.")
+		SignalBus.ui_popup.emit(messages[random_message_idx])

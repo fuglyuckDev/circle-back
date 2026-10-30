@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 
 
 func open_door():
-	SignalBus.ui_popup.emit("Leave. Now.")
+	SignalBus.ui_popup.emit("Alright that's the last one. Find the fire escape, the green light should be on. Leave. Good luck.")
 	%ExitSign.get_active_material(0).emission_enabled = true
 	%ExitSign.get_children()[0].visible = true
 	self.add_to_group(&"interactable")
