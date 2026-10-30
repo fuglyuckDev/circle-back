@@ -131,33 +131,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.46955, -0.46793413, 37.00
 
 [node name="CeilingTileLight2" parent="NavigationRegion3D/Ceiling" unique_id=1201139500 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.469559, -0.46793413, 37.007095)
+visible = false
 
 [node name="CeilingTileLight3" parent="NavigationRegion3D/Ceiling" unique_id=1985056079 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.212967, -0.46793413, 37.007095)
+visible = false
 
 [node name="CeilingTileLight4" parent="NavigationRegion3D/Ceiling" unique_id=32488720 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.212967, -0.46793413, 29.397337)
 
 [node name="CeilingTileLight5" parent="NavigationRegion3D/Ceiling" unique_id=152469330 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.10236, -0.46793413, 29.397337)
+visible = false
 
 [node name="CeilingTileLight6" parent="NavigationRegion3D/Ceiling" unique_id=1848808763 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.595768, -0.46793413, 26.95495)
+visible = false
 
 [node name="CeilingTileLight7" parent="NavigationRegion3D/Ceiling" unique_id=82926635 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.176044, -0.4799018, 24.944765)
 
 [node name="CeilingTileLight8" parent="NavigationRegion3D/Ceiling" unique_id=1987103536 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.748524, -0.4799018, 23.321386)
+visible = false
 
 [node name="CeilingTileLight9" parent="NavigationRegion3D/Ceiling" unique_id=2077974541 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2136, -0.4799018, 23.321386)
+visible = false
 
 [node name="CeilingTileLight10" parent="NavigationRegion3D/Ceiling" unique_id=2078165735 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2136, -0.4799018, 15.711625)
 
 [node name="CeilingTileLight15" parent="NavigationRegion3D/Ceiling" unique_id=150358599 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.027524, -0.4799018, 23.321386)
+visible = false
 
 [node name="CeilingTileLight17" parent="NavigationRegion3D/Ceiling" unique_id=855473494 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.720273, -0.4799018, 25.704256)
@@ -173,27 +180,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.676014, -0.4799018, 38.531
 
 [node name="CeilingTileLight19" parent="NavigationRegion3D/Ceiling" unique_id=623545049 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.846887, -0.4799018, 34.417755)
+visible = false
 
 [node name="CeilingTileLight20" parent="NavigationRegion3D/Ceiling" unique_id=823299344 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.085091, -0.4799018, 18.766691)
 
 [node name="CeilingTileLight27" parent="NavigationRegion3D/Ceiling" unique_id=1756552996 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.894371, -0.47990274, 14.090087)
+visible = false
 
 [node name="CeilingTileLight28" parent="NavigationRegion3D/Ceiling" unique_id=208629860 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.80711, -0.47990274, 13.741894)
 
 [node name="CeilingTileLight29" parent="NavigationRegion3D/Ceiling" unique_id=1019420442 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.506134, -0.47990274, 27.620975)
+visible = false
 
 [node name="CeilingTileLight30" parent="NavigationRegion3D/Ceiling" unique_id=1694293119 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.809105, -0.47990274, 19.441113)
 
 [node name="CeilingTileLight31" parent="NavigationRegion3D/Ceiling" unique_id=1195297444 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.148106, -0.47990274, 27.925514)
+visible = false
 
 [node name="CeilingTileLight32" parent="NavigationRegion3D/Ceiling" unique_id=342435357 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.522728, -0.4799018, 35.19015)
+visible = false
 
 [node name="CeilingTileLight33" parent="NavigationRegion3D/Ceiling" unique_id=1394667130 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.06456, -0.4799018, 35.180035)
@@ -203,21 +215,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.437498, -0.4799018, 25.722
 
 [node name="CeilingTileLight21" parent="NavigationRegion3D/Ceiling" unique_id=14772903 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6273727, -0.4799018, 14.847573)
+visible = false
 
 [node name="CeilingTileLight22" parent="NavigationRegion3D/Ceiling" unique_id=507347122 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6273727, -0.4799018, 22.432373)
+visible = false
 
 [node name="CeilingTileLight23" parent="NavigationRegion3D/Ceiling" unique_id=324265014 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2132607, -0.4799018, 22.432373)
 
 [node name="CeilingTileLight16" parent="NavigationRegion3D/Ceiling" unique_id=1363588697 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.027524, -0.4799018, 15.711625)
+visible = false
 
 [node name="CeilingTileLight11" parent="NavigationRegion3D/Ceiling" unique_id=1355899791 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.102993, -0.4799018, 15.711625)
 
 [node name="CeilingTileLight14" parent="NavigationRegion3D/Ceiling" unique_id=1343614759 instance=ExtResource("7_743nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.07471, -0.4799018, 14.415502)
+visible = false
 
 [node name="Walls" type="Node3D" parent="NavigationRegion3D" unique_id=1586982379]
 
