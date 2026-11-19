@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bk3fv30b42yed" path="res://bin/world/objects/desk/desk.gd" id="1_cares"]
 [ext_resource type="Texture2D" uid="uid://11clx738juvb" path="res://bin/world/textures/prototype/wood-grain.png" id="2_su5sq"]
 [ext_resource type="Script" uid="uid://chipp4l22k4ro" path="res://bin/world/objects/desk/default_items.gd" id="2_u0oef"]
+[ext_resource type="Script" uid="uid://dbu4ex3dkgilw" path="res://bin/world/objects/desk/ui_plane.gd" id="4_10cbg"]
+[ext_resource type="PackedScene" uid="uid://bhlsl0gonruyy" path="res://bin/ui/diagetic_ui/interaction_ui.tscn" id="4_su5sq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10cbg"]
 albedo_color = Color(0.9973789, 0.9526873, 0.90840626, 1)
@@ -22,6 +24,26 @@ uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
 size = Vector3(1.9835205, 0.9250488, 0.97998047)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m4qru"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro5t6"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+albedo_color = Color(4.8672786, 4.8672786, 4.8672786, 1)
+albedo_texture = SubResource("ViewportTexture_m4qru")
+albedo_texture_msdf = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.55
+
+[sub_resource type="QuadMesh" id="QuadMesh_pitpm"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ro5t6")
+flip_faces = true
+size = Vector2(0.1, 0.1)
 
 [node name="Desk" type="Node3D" unique_id=1296511605 groups=["interactable"]]
 script = ExtResource("1_cares")
@@ -123,3 +145,14 @@ transform = Transform3D(0.9398972, 0, 0.3414577, 0, 1, 0, -0.3414577, 0, 0.93989
 
 [node name="CameraTarget" type="Marker3D" parent="." unique_id=653597059 groups=["interactable"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.48726642, 0.08481735)
+
+[node name="ui_plane" type="MeshInstance3D" parent="." unique_id=58520778]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44907033, 0.5172188)
+visible = false
+mesh = SubResource("QuadMesh_pitpm")
+script = ExtResource("4_10cbg")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1342245121]
+
+[node name="InteractionUi" parent="SubViewport" unique_id=1444434748 instance=ExtResource("4_su5sq")]

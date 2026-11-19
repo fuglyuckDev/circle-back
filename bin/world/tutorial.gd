@@ -40,6 +40,7 @@ func _input(event: InputEvent) -> void:
 		if current_input != "controller":
 			current_input = "controller"
 			selected_input = controller_inputs
+	SignalBus.set_control_scheme.emit(current_input)
 
 func _on_timer_timeout() -> void:
 	_construct_tutorial_message(tutorial_stage)

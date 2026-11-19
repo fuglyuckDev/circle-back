@@ -27,22 +27,22 @@ vec3 color_mix(vec3 a, vec3 b, float f ){
 }
 
 vec3 quantize_color(vec3 color, int levels) {
-    float quantizer = float(levels - 1);
-    return floor(color * quantizer + 0.5) / quantizer;
+	float quantizer = float(levels - 1);
+	return floor(color * quantizer + 0.5) / quantizer;
 }
 
 float dither(vec2 position, float brightness) {
-    int x = int(mod(position.x, 4.0));
-    int y = int(mod(position.y, 4.0));
-    int index = x + y * 4;
-    float dithering[16] = float[](
-        0.0, 0.5, 0.125, 0.625,
-        0.75, 0.25, 0.875, 0.375,
-        0.1875, 0.6875, 0.0625, 0.5625,
-        0.9375, 0.4375, 1.0, 0.8125
-    );
-    float threshold = dithering[index];
-    return brightness < threshold ? 0.0 : 1.0;
+	int x = int(mod(position.x, 4.0));
+	int y = int(mod(position.y, 4.0));
+	int index = x + y * 4;
+	float dithering[16] = float[](
+		0.0, 0.5, 0.125, 0.625,
+		0.75, 0.25, 0.875, 0.375,
+		0.1875, 0.6875, 0.0625, 0.5625,
+		0.9375, 0.4375, 1.0, 0.8125
+	);
+	float threshold = dithering[index];
+	return brightness < threshold ? 0.0 : 1.0;
 }
 
 void vertex() {

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bhlsl0gonruyy"]
+
+[ext_resource type="Texture2D" uid="uid://be3kpaer5teul" path="res://bin/ui/diagetic_ui/hide_icon.png" id="1_4gaeh"]
+
+[node name="InteractionUi" type="Control" unique_id=1444434748]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=769047051]
+modulate = Color(1, 1, 1, 0.48235294)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_4gaeh")

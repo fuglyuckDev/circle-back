@@ -27,13 +27,15 @@ var start_head_position = null
 
 var persuit := false
 
+func _ready() -> void:
+	SignalBus.jumpscare_screenshake.connect(_on_start_jumpscare)
+	SignalBus.persuit.connect(_on_enter_persuit)
+	SignalBus.exit_persuit.connect(_on_exit_persuit)
+
 func enter():
 	start_head_position = %FirstPersonView.position
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	%Feets.play()
-	SignalBus.jumpscare_screenshake.connect(_on_start_jumpscare)
-	SignalBus.persuit.connect(_on_enter_persuit)
-	SignalBus.exit_persuit.connect(_on_exit_persuit)
 	print("First Person Input")
 
 func _on_enter_persuit() -> void:

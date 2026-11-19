@@ -9,6 +9,8 @@ var manager_stage_1 : int = 0
 var manager_stage_2 : int = 0
 var manager_stage_3 : int = 0
 
+var player_camera : Camera3D
+
 var calc_done := false
 
 func _ready() -> void:

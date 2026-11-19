@@ -36,6 +36,8 @@ func _ready() -> void:
 	SignalBus.is_hiding.connect(_on_is_hiding)
 	SignalBus.manager_stage.connect(_on_manager_stage_change)
 	SignalBus.can_interact.connect(_on_can_interact)
+	GameState.player_camera = %FirstPersonView
+	toggle_blur_effect(0.0)
 
 func _process(_delta) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

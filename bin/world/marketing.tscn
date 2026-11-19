@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bunexmdy07mun"]
+
+[ext_resource type="PackedScene" uid="uid://cxqsnf3bj1sk8" path="res://bin/entities/manager/manger.tscn" id="1_jtue6"]
+[ext_resource type="Texture2D" uid="uid://b50ksufnwhapn" path="res://bin/world/textures/prototype/matting-1000-mm-architextures.jpg" id="2_ennn5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jtue6"]
+
+[sub_resource type="Sky" id="Sky_156fb"]
+sky_material = SubResource("PanoramaSkyMaterial_jtue6")
+
+[sub_resource type="Environment" id="Environment_ennn5"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_156fb")
+sky_rotation = Vector3(0, 1.7802359, 0)
+tonemap_mode = 2
+tonemap_exposure = 0.59
+tonemap_white = 1.59
+tonemap_agx_white = 16.5
+tonemap_agx_contrast = 1.48
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_cascades = 8
+sdfgi_y_scale = 2
+glow_enabled = true
+glow_blend_mode = 2
+fog_light_color = Color(0, 0, 0, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+volumetric_fog_albedo = Color(1, 1, 0.8745098, 1)
+adjustment_enabled = true
+adjustment_saturation = 1.34
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pil82"]
+vertices = PackedVector3Array(-39.25, 0.5, -39.25, -39.25, 0.5, 39.25, 39.25, 0.5, 39.25, 39.25, 0.5, -39.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_radius = 0.7
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4ly6b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlusl"]
+albedo_color = Color(0.24901715, 0.37298188, 0.4145874, 1)
+albedo_texture = ExtResource("2_ennn5")
+metallic_specular = 0.0
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_62gk7"]
+material = SubResource("StandardMaterial3D_vlusl")
+size = Vector2(80, 80)
+
+[node name="Marketing" type="Node3D" unique_id=226291741]
+
+[node name="Manger" parent="." unique_id=68780236 instance=ExtResource("1_jtue6")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1561780970]
+environment = SubResource("Environment_ennn5")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2046962033]
+transform = Transform3D(-0.9178714, 0.016608126, 0.39653036, 3.4166294e-09, 0.99912405, -0.041846924, -0.39687803, -0.03841009, -0.91706735, 1.2475358, 1.7381871, -3.0706997)
+fov = 16.8
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1248199296]
+navigation_mesh = SubResource("NavigationMesh_pil82")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1110393331]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=931678486]
+shape = SubResource("WorldBoundaryShape3D_4ly6b")
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="NavigationRegion3D/Floor/CollisionShape3D" unique_id=27158550]
+mesh = SubResource("PlaneMesh_62gk7")
+
+[node name="RoamingTargets" type="Node3D" parent="." unique_id=529231651]
+
+[node name="Marker3D" type="Marker3D" parent="RoamingTargets" unique_id=1565380981 groups=["roam_target"]]

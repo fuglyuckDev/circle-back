@@ -13,3 +13,4 @@ signal manager_stage(value:int)
 signal game_started
 signal can_interact(value:bool)
 signal flashlight_state(value:bool)
+signal set_control_scheme(value:String)
